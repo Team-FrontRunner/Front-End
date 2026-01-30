@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 const CardGame = () => {
+  const navigate = useNavigate();
   const celebrityIcons = [
     { name: '임영웅', img: '../cardGameIMG/임영웅.png' },
     { name: '영탁', img: '../cardGameIMG/영탁.png' },
@@ -10,7 +11,7 @@ const CardGame = () => {
     { name: '장민호', img: '../cardGameIMG/장민호.png' },
     { name: '남진', img: '../cardGameIMG/남진.png' },
     { name: '진성', img: '../cardGameIMG/진성.png' }
-  ];
+  ]; 
 
   // 오답 메시지 리스트
   const wrongMessages = [
@@ -194,12 +195,35 @@ const CardGame = () => {
         <div style={{ fontSize: '18px', fontWeight: 'bold' }}>
           맞춘 카드: <span style={{ color: '#84CC16' }}>{matchedIndices.length / 2}</span> / 8
         </div>
-        <button 
-          onClick={() => setGameState('READY')}
-          style={{ background: 'none', border: 'none', marginTop: '20px', fontSize: '16px', color: '#999', cursor: 'pointer' }}
-        >
-          ← 돌아가기
-        </button>
+       <button 
+  onClick={() => navigate('/game-select')} // 이 부분을 원하는 경로로 수정
+  style={{
+    backgroundColor: '#84CC16',
+    color: '#FFFFFF',
+    border: 'none',
+    borderRadius: '50px',
+    padding: '12px 25px',
+    fontSize: '18px',
+    fontWeight: 'bold',
+    cursor: 'pointer',
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '10px',
+    boxShadow: '0 4px 0 #65A30D',
+    marginTop: '20px'
+  }}
+  onMouseDown={(e) => {
+    e.currentTarget.style.transform = 'translateY(2px)';
+    e.currentTarget.style.boxShadow = '0 2px 0 #65A30D';
+  }}
+  onMouseUp={(e) => {
+    e.currentTarget.style.transform = 'translateY(0)';
+    e.currentTarget.style.boxShadow = '0 4px 0 #65A30D';
+  }}
+>
+  <span style={{ fontSize: '20px', fontWeight: '900' }}>〈</span>
+  돌아가기
+</button>
       </footer>
     </div>
   );
