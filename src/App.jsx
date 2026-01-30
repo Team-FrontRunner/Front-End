@@ -21,6 +21,7 @@ import OddOneOut from './pages/OddOneOut.jsx'
 import NumberGame from './pages/NumberGame.jsx'
 import FirstT from './pages/KakaoTaxiStudy/FirstT.jsx'
 import DDok from './pages/DDok.jsx'
+import TestAPP from './pages/TestAPP.jsx'
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
         <Route path="/number-game" element={<NumberGame />} />
         <Route path="/taxi" element={<FirstT />} />
         <Route path="/ddok" element={<DDok />} />
+        <Route path="/test-app" element={<TestAPP />} />
       </Routes>
     </Router>
   )
