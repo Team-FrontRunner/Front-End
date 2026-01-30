@@ -159,7 +159,13 @@ const AppSelection = () => {
             <div style={styles.appDesc}>{app.description}</div>
 
             <button 
-              onClick={() => navigate(app.link)}
+              onClick={() => {
+                if (app.id === 'navermap') {
+                  navigate(app.link);
+                } else {
+                  alert('아직 준비중인 서비스입니다.');
+                }
+              }}
               style={{
                 ...styles.startButton,
                 backgroundColor: app.themeColor,
