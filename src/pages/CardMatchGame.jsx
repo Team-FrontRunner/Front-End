@@ -15,8 +15,6 @@ const CardGame = () => {
 
   // 오답 메시지 리스트
   const wrongMessages = [
-    "할매 스트레스 많이 받을거야~",
-    "할배 스트레스 많이 받을거야~",
     "그런 스트레스도 필요해!",
     "두뇌가 말랑해지는 중",
     "다시 한번 해볼까요?",
@@ -117,21 +115,21 @@ const CardGame = () => {
   };
 
   const styles = {
-    container: { width: '390px', height: '844px', backgroundColor: '#FFFFFF', margin: '0 auto', display: 'flex', flexDirection: 'column', fontFamily: '"Pretendard", sans-serif', position: 'relative', overflow: 'hidden' },
+    container: { width: '390px', height: '844px', backgroundColor: '#fffbf0', margin: '0 auto', display: 'flex', flexDirection: 'column', fontFamily: '"Pretendard", sans-serif', position: 'relative', overflow: 'hidden' },
     header: { padding: '50px 20px 20px', textAlign: 'center' },
     titleBadge: { backgroundColor: '#F0F0F0', padding: '10px 30px', borderRadius: '12px', display: 'inline-block' },
     grid: { display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px', padding: '15px', perspective: '1000px' },
     card: { height: '100px', position: 'relative', transformStyle: 'preserve-3d', transition: 'transform 0.5s', cursor: 'pointer' },
     cardFace: { position: 'absolute', width: '100%', height: '100%', backfaceVisibility: 'hidden', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 2px 5px rgba(0,0,0,0.1)', border: '1px solid #ddd' },
-    overlay: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(255,255,255,0.95)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', zIndex: 100 },
-    startBtn: { padding: '15px 40px', fontSize: '20px', fontWeight: '900', backgroundColor: '#84CC16', color: 'white', border: 'none', borderRadius: '50px', cursor: 'pointer', boxShadow: '0 4px 0 #65A30D' }
+    overlay: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(255,251,240,0.95)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', zIndex: 100 },
+    startBtn: { padding: '15px 40px', fontSize: '30px', fontWeight: '900', backgroundColor: '#84CC16', color: 'white', border: 'none', borderRadius: '50px', cursor: 'pointer', boxShadow: '0 4px 0 #65A30D' }
   };
 
   return (
     <div style={styles.container}>
       {gameState === 'READY' && (
         <div style={styles.overlay}>
-          <h2 style={{ marginBottom: '20px' }}>두뇌 회전 카드 게임</h2>
+          <h2 style={{ marginBottom: '10px', fontSize: '35px', fontWeight: '700' }}>두뇌 회전 카드 게임</h2>
           <button style={styles.startBtn} onClick={initGame}>시작하기</button>
         </div>
       )}
