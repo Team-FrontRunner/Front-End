@@ -162,7 +162,12 @@ const AppSelection = () => {
               onClick={() => {
                 if (app.id === 'navermap') {
                   navigate(app.link);
-                } else {
+                } 
+                else if (app.id === 'kakaotaxi') {
+                  navigate(app.link);
+                }
+                
+                else {
                   alert('아직 준비중인 서비스입니다.');
                 }
               }}
