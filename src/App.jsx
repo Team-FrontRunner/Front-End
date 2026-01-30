@@ -9,12 +9,10 @@ import FirstMap from './pages/NaverMapStudy/FirstMap'
 import SecondMap from './pages/NaverMapStudy/SecondMap'
 import ThirdMap from './pages/NaverMapStudy/ThirdMap.jsx'
 import Settings from './pages/settings.jsx'
-<<<<<<< HEAD
 import MathGame from './pages/mathGame.jsx'
-=======
 import MyStatPage from './pages/mystatPage.jsx'
 import CardMatchGame from './pages/CardMatchGame.jsx'
->>>>>>> 926e75cb48ea8abb4cc2c3be4d3127e3c2ac13b6
+
 
 function App() {
   return (
@@ -30,11 +28,9 @@ function App() {
         <Route path="/gilchatgi" element={<SecondMap/>} />
         <Route path="/jido" element={<ThirdMap/>} />
         <Route path="/settings" element={<Settings />} />
-<<<<<<< HEAD
         <Route path="/math-game" element={<MathGame />} />
-=======
         <Route path="/mystat" element={<MyStatPage />} />
->>>>>>> 926e75cb48ea8abb4cc2c3be4d3127e3c2ac13b6
+
       </Routes>
     </Router>
   )
