@@ -65,7 +65,7 @@ const BrainGame = () => {
   const styles = {
     container: {
       width: '390px', height: '844px', margin: '0 auto',
-      backgroundColor: '#F3F4F6', fontFamily: '"Pretendard", sans-serif',
+      backgroundColor: '#FFFBEB', fontFamily: '"Pretendard", sans-serif',
       display: 'flex', flexDirection: 'column',
       padding: '20px', boxSizing: 'border-box',
       position: 'relative'
