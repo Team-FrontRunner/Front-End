@@ -5,7 +5,8 @@ import AppTrainingPage from './pages/appTrainingPage'
 import ShoppingPage from './pages/shoppingPage'
 import MyPage from './pages/myPage'
 import './App.css'
-import CardMatchGame from './pages/CardMatchGame'
+import CardMatchGame from './pages/cardMatchGame'
+import FirstMap from './pages/NaverMapStudy/FirstMap'
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/shopping" element={<ShoppingPage />} />
         <Route path="/my-page" element={<MyPage />} />
         <Route path="/card-game" element={<CardMatchGame />} />
+        <Route path="/map" element={<FirstMap/>} />
       </Routes>
     </Router>
   )
