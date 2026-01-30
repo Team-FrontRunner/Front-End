@@ -1,8 +1,23 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
+import GameSelectPage from './pages/gameSelectPage'
+import AppTrainingPage from './pages/appTrainingPage'
+import ShoppingPage from './pages/shoppingPage'
+import MyPage from './pages/myPage'
 import './App.css'
 
 function App() {
-  return <HomePage />
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/game-select" element={<GameSelectPage />} />
+        <Route path="/training" element={<AppTrainingPage />} />
+        <Route path="/shopping" element={<ShoppingPage />} />
+        <Route path="/my-page" element={<MyPage />} />
+      </Routes>
+    </Router>
+  )
 }
 
 export default App
