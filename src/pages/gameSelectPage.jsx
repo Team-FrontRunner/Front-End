@@ -99,9 +99,32 @@ const BrainMissionApp = () => {
   return (
     <div style={styles.container}>
       {/* 상단 제목 영역 */}
-      <header style={styles.header}>
-        <div style={styles.titleBadge}>
-          <h1 style={styles.title}>일일 두뇌 미션</h1>
+      <header style={{ ...styles.header, padding: '50px 20px 40px 20px' }}>
+        <div style={{
+          backgroundColor: '#1A2E05', // 어두운 배경으로 무게감 부여
+          padding: '12px 35px',
+          borderRadius: '12px',
+          position: 'relative',
+          boxShadow: '0 4px 0 #84CC16', // 하단에 연두색 두께감 추가
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '10px'
+        }}>
+          {/* 장식용 바 */}
+          <div style={{ width: '4px', height: '16px', backgroundColor: '#84CC16', borderRadius: '2px' }} />
+          
+          <h1 style={{
+            margin: 0,
+            fontSize: '20px',
+            fontWeight: '900',
+            color: '#FFFFFF', // 글자는 흰색으로 대비
+            letterSpacing: '3px',
+            textShadow: '1px 1px 0 rgba(0,0,0,0.2)'
+          }}>
+            일일 두뇌 미션
+          </h1>
+
+          <div style={{ width: '4px', height: '16px', backgroundColor: '#84CC16', borderRadius: '2px' }} />
         </div>
       </header>
 
