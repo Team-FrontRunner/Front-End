@@ -115,7 +115,7 @@ const CardGame = () => {
   };
 
   const styles = {
-    container: { width: '390px', height: '844px', backgroundColor: '#fffbf0', margin: '0 auto', display: 'flex', flexDirection: 'column', fontFamily: '"Pretendard", sans-serif', position: 'relative', overflow: 'hidden' },
+    container: { width: '390px', height: '844px', backgroundColor: '#fffbf0', margin: '0 auto', display: 'flex', flexDirection: 'column', fontFamily: '"Pretendard", sans-serif', fontSize: '30px', position: 'relative', overflow: 'hidden' },
     header: { padding: '50px 20px 20px', textAlign: 'center' },
     titleBadge: { backgroundColor: '#F0F0F0', padding: '10px 30px', borderRadius: '12px', display: 'inline-block' },
     grid: { display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px', padding: '15px', perspective: '1000px' },
@@ -137,20 +137,20 @@ const CardGame = () => {
       {gameState === 'FINISHED' && (
         <div style={styles.overlay}>
           <h2 style={{ color: '#84CC16' }}>🎉 미션 성공!</h2>
-          <p style={{ fontSize: '18px', margin: '10px 0 20px' }}>기록: {formatTime(timer)}</p>
+          <p style={{ fontSize: '30px', margin: '10px 0 20px' }}>기록: {formatTime(timer)}</p>
           <button style={styles.startBtn} onClick={initGame}>다시 하기</button>
         </div>
       )}
 
       <header style={styles.header}>
         <div style={styles.titleBadge}>
-          <h1 style={{ margin: 0, fontSize: '24px' }}>카드 맞추기</h1>
+          <h1 style={{ margin: 0, fontSize: '30px' }}>카드 맞추기</h1>
         </div>
         <div style={{ marginTop: '15px', fontWeight: 'bold', color: '#666' }}>
           시간: {formatTime(timer)}
         </div>
         {/* 랜덤 오답 메시지 영역 */}
-        <div style={{ height: '30px', marginTop: '10px', color: '#EF4444', fontWeight: 'bold', fontSize: '16px' }}>
+        <div style={{ height: '30px', marginTop: '10px', color: '#EF4444', fontWeight: 'bold', fontSize: '30px' }}>
           {wrongMessage}
         </div>
       </header>
@@ -182,7 +182,7 @@ const CardGame = () => {
               }}>
                 <img src={card.img} alt={card.name} style={{ width: '90%', height: '90%', objectFit: 'cover', borderRadius: '4px' }} 
                      onError={(e) => { e.target.style.display='none'; e.target.nextSibling.style.display='block'; }} />
-                <span style={{ fontSize: '14px', display: 'none' }}>{card.name}</span>
+                <span style={{ fontSize: '30px', display: 'none' }}>{card.name}</span>
               </div>
             </div>
           );
@@ -190,7 +190,7 @@ const CardGame = () => {
       </main>
 
       <footer style={{ marginTop: 'auto', padding: '30px', textAlign: 'center' }}>
-        <div style={{ fontSize: '18px', fontWeight: 'bold' }}>
+        <div style={{ fontSize: '30px', fontWeight: 'bold' }}>
           맞춘 카드: <span style={{ color: '#84CC16' }}>{matchedIndices.length / 2}</span> / 8
         </div>
        <button 
@@ -201,7 +201,7 @@ const CardGame = () => {
     border: 'none',
     borderRadius: '50px',
     padding: '12px 25px',
-    fontSize: '18px',
+    fontSize: '30px',
     fontWeight: 'bold',
     cursor: 'pointer',
     display: 'inline-flex',
@@ -219,7 +219,7 @@ const CardGame = () => {
     e.currentTarget.style.boxShadow = '0 4px 0 #65A30D';
   }}
 >
-  <span style={{ fontSize: '20px', fontWeight: '900' }}>〈</span>
+  <span style={{ fontSize: '22px', fontWeight: '900' }}>〈</span>
   돌아가기
 </button>
       </footer>
