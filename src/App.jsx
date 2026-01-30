@@ -9,6 +9,7 @@ import CardMatchGame from './pages/cardMatchGame'
 import FirstMap from './pages/NaverMapStudy/FirstMap'
 import SecondMap from './pages/NaverMapStudy/SecondMap'
 import ThridMap from './pages/NaverMapStudy/ThridMap'
+import Settings from './pages/settings.jsx'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/map" element={<FirstMap/>} />
         <Route path="/gilchatgi" element={<SecondMap/>} />
         <Route path="/jido" element={<ThridMap/>} />
+        <Route path="/settings" element={<Settings />} />
       </Routes>
     </Router>
   )

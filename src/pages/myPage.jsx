@@ -55,7 +55,7 @@ export default function MyPage() {
           <span className="arrow">›</span>
         </button>
 
-        <button className="menu-item">
+        <button className="menu-item" onClick={() => navigate('/settings')}>
           <span>앱 설정</span>
           <span className="arrow">›</span>
         </button>

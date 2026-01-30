@@ -1,0 +1,97 @@
+.settings-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background: #fffbf0;
+  position: relative;
+}
+
+/* 상단 설정 섹션 */
+.settings-header {
+  background: #fffbf0;
+  padding: 40px 20px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.settings-icon {
+  width: 60px;
+  height: 60px;
+  background: #7FD821;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: white;
+  font-size: 32px;
+}
+
+.settings-icon svg {
+  width: 32px;
+  height: 32px;
+  stroke: white;
+}
+
+.settings-title {
+  font-size: 35px;
+  font-weight: 700;
+  margin: 0;
+  color: #194018;
+}
+
+/* 설정 메뉴 카드 */
+.settings-menu-card {
+  background: white;
+  border-radius: 20px;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  margin: 0 20px 20px 20px;
+  border: 1px solid #e8e8e8;
+}
+
+.settings-menu-card .settings-menu-item {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #f0f0f0;
+  padding: 16px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  cursor: pointer;
+  border-radius: 0;
+  text-align: left;
+  font-size: 25px;
+  font-weight: 600;
+  color: #564D11;
+  transition: background 0.2s ease;
+}
+
+.settings-menu-card .settings-menu-item:last-child {
+  border-bottom: none;
+}
+
+.settings-menu-card .settings-menu-item:hover {
+  background: #f8f8f8;
+}
+
+.settings-menu-card .arrow {
+  font-size: 24px;
+  color: #ccc;
+  font-weight: 300;
+  flex-shrink: 0;
+}
+
+/* 페이지 하단 바닥글 */
+.settings-footer {
+  margin-top: auto;
+  padding: 40px 30px;
+  display: flex;
+  justify-content: flex-start;
+}
