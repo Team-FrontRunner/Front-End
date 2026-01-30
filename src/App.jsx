@@ -22,6 +22,7 @@ import NumberGame from './pages/NumberGame.jsx'
 import FirstT from './pages/KakaoTaxiStudy/FirstT.jsx'
 import DDok from './pages/DDok.jsx'
 import TestAPP from './pages/TestAPP.jsx'
+import MyStatPage2 from './pages/mystatPage2.jsx'
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
         <Route path="/taxi" element={<FirstT />} />
         <Route path="/ddok" element={<DDok />} />
         <Route path="/test-app" element={<TestAPP />} />
+        <Route path="/mystat2" element={<MyStatPage2 />} />
       </Routes>
     </Router>
   )

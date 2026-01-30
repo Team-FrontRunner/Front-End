@@ -34,7 +34,7 @@ export default function HomePage() {
           오늘 몸은<br />
           어떠신가요?
         </h1>
-        <button className="health-check-btn" onClick={() => navigate('/mystat')}>
+        <button className="health-check-btn" onClick={() => navigate('/mystat2')}>
           <div className="health-icon">
             <img src={heartIcon} alt="heart" />
           </div>

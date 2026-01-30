@@ -1,0 +1,64 @@
+.mystat2-page {
+  min-height: 100%;
+  background: #fffbf0;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20px 24px 20px;
+  box-sizing: border-box;
+}
+
+.mystat2-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.mystat2-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.mystat2-title {
+  font-size: 35px;
+  font-weight: 700;
+  margin: 0;
+  color: #194018;
+}
+
+.mystat2-subtitle {
+  font-size: 25px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: #194018;
+}
+
+.mystat2-result-card {
+  width: 100%;
+  max-width: 280px;
+  background: #51B00C;
+  color: #ffffff;
+  border-radius: 22px;
+  padding: 18px 16px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.mystat2-result-card p {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+
+.mystat2-footer {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 16px;
+}
