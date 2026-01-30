@@ -5,6 +5,8 @@ import AppTrainingPage from './pages/appTrainingPage'
 import ShoppingPage from './pages/shoppingPage'
 import MyPage from './pages/myPage'
 import './App.css'
+import CardMatchGame from './pages/CardMatchGame'
+
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
         <Route path="/training" element={<AppTrainingPage />} />
         <Route path="/shopping" element={<ShoppingPage />} />
         <Route path="/my-page" element={<MyPage />} />
+        <Route path="/card-game" element={<CardMatchGame />} />
       </Routes>
     </Router>
   )
