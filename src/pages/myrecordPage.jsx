@@ -1,10 +1,13 @@
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './myrecordPage.css'
 import BackButton from '../components/common/backButton'
 import brainIcon from '../assets/icons/brain2.png'
+import { getGameRecords } from '../api/gameRecordsApi'
 
 export default function MyRecordPage() {
   const navigate = useNavigate()
+  const [gameRecords, setGameRecords] = useState([])
 
   const periodSettings = [
     { label: '일주일' },
@@ -22,14 +25,18 @@ export default function MyRecordPage() {
     { label: '퍼즐 맞추기' },
   ]
 
-  const gameRecords = [
-    { date: '2026년 01월 04일 | 14:30', points: '획득 포인트: 15 P' },
-    { date: '2026년 01월 04일 | 10:15', points: '획득 포인트: 8 P' },
-    { date: '2026년 01월 03일 | 18:50', points: '획득 포인트: 20 P' },
-    { date: '2026년 01월 03일 | 09:05', points: '획득 포인트: 12 P' },
-    { date: '2026년 01월 02일 | 16:20', points: '획득 포인트: 5 P' },
-    { date: '2026년 01월 02일 | 11:45', points: '획득 포인트: 18 P' },
-  ]
+  useEffect(() => {
+    const fetchGameRecords = async () => {
+      try {
+        const data = await getGameRecords("f57ce428-5e03-4613-9186-cdbce942ba7a");
+        setGameRecords(data);
+      } catch (error) {
+        console.error('게임 기록 로드 실패:', error);
+      }
+    }
+
+    fetchGameRecords();
+  }, [])
 
   return (
     <div className="myrecord-page">
