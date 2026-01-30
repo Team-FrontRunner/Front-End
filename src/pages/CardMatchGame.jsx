@@ -10,14 +10,14 @@ const CardGame = () => {
   const navigate = useNavigate();
   // ... (celebrityIcons, wrongMessages 배열은 기존과 동일) ...
   const celebrityIcons = [
-    { name: '임영웅', img: '../cardGameIMG/임영웅.png' },
-    { name: '영탁', img: '../cardGameIMG/영탁.png' },
-    { name: '이찬원', img: '../cardGameIMG/이찬원.png' },
-    { name: '박서진', img: '../cardGameIMG/박서진.png' },
-    { name: '정동원', img: '../cardGameIMG/정동원.png' },
-    { name: '장민호', img: '../cardGameIMG/장민호.png' },
-    { name: '남진', img: '../cardGameIMG/남진.png' },
-    { name: '진성', img: '../cardGameIMG/진성.png' }
+    { name: '임영웅', img: '../cardGameIMG/hero.png' },
+    { name: '영탁', img: '../cardGameIMG/zero.png' },
+    { name: '이찬원', img: '../cardGameIMG/lee.png' },
+    { name: '박서진', img: '../cardGameIMG/park.png' },
+    { name: '정동원', img: '../cardGameIMG/jd1.png' },
+    { name: '장민호', img: '../cardGameIMG/jang.png' },
+    { name: '남진', img: '../cardGameIMG/namjin.png' },
+    { name: '진성', img: '../cardGameIMG/jin.png' } 
   ]; 
 
   const wrongMessages = [
