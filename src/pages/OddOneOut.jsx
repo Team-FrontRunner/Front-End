@@ -86,7 +86,7 @@ const OddOneOut = () => {
   const styles = {
     container: {
       width: '390px', height: '844px', margin: '0 auto',
-      backgroundColor: '#F0FDF4', fontFamily: '"Pretendard", sans-serif',
+      backgroundColor: '#FFFBEB', fontFamily: '"Pretendard", sans-serif',
       display: 'flex', flexDirection: 'column', padding: '20px', boxSizing: 'border-box',
       position: 'relative'
     },
