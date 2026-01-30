@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './mystatPage.css'
 import BackButton from '../components/common/backButton'
@@ -8,6 +8,7 @@ import { getHealthRecords } from '../api/healthRecordsApi'
 export default function MyStatPage() {
   const navigate = useNavigate()
   const [healthRecords, setHealthRecords] = useState([])
+  const [selectedCategory, setSelectedCategory] = useState(null)
 
   const periodSettings = [
     { label: '일주일' },
@@ -16,11 +17,31 @@ export default function MyStatPage() {
     { label: '1년' },
   ]
 
-  const categoryViews = [
-    { label: '추위(2)' },
-    { label: '허리 통증(11)' },
-    { label: '관절 통증(3)' },
-  ]
+  // healthRecords에서 category별로 자동 분류
+  const categoryViews = useMemo(() => {
+    const categoryCount = {};
+    healthRecords.forEach(record => {
+      const category = record.category;
+      if (category) {
+        categoryCount[category] = (categoryCount[category] || 0) + 1;
+      }
+    });
+    
+    return Object.entries(categoryCount).map(([category, count]) => ({
+      category,
+      label: `${category}(${count})`
+    }));
+  }, [healthRecords])
+
+  // 선택된 카테고리에 따라 필터링된 기록
+  const filteredRecords = useMemo(() => {
+    if (!selectedCategory) return healthRecords;
+    return healthRecords.filter(record => record.category === selectedCategory);
+  }, [healthRecords, selectedCategory])
+
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(selectedCategory === category ? null : category);
+  }
 
   useEffect(() => {
     const fetchHealthRecords = async () => {
@@ -59,10 +80,14 @@ export default function MyStatPage() {
 
       {/* 카테고리별 보기 섹션 */}
       <div className="mystat-section">
-        <h2 className="section-label">무슨 종류 기록을 볼까요?</h2>
+        <h2 className="section-label">무슨 종류의 기록을 볼까요?</h2>
         <div className="button-group">
           {categoryViews.map((item, index) => (
-            <button key={index} className="tag-button">
+            <button 
+              key={index} 
+              className={`tag-button ${selectedCategory === item.category ? 'active' : ''}`}
+              onClick={() => handleCategoryClick(item.category)}
+            >
               {item.label}
             </button>
           ))}
@@ -71,9 +96,9 @@ export default function MyStatPage() {
 
       {/* 건강 기록 리스트 */}
       <div className="health-records">
-        {healthRecords.map((record, index) => (
+        {filteredRecords.map((record, index) => (
           <div key={index} className="record-card">
-            <div className="record-date">{record.date}</div>
+            <div className="record-date">{record.created_at}</div>
             <div className="record-content">{record.content}</div>
           </div>
         ))}
