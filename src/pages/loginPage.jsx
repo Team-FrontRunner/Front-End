@@ -14,7 +14,7 @@ export default function LoginPage() {
     <div className="login-page">
       <div className="login-content">
         <div className="login-header">
-          <h1 className="login-title">(서비스 이름)</h1>
+          <h1 className="login-title">늘 봄</h1>
           <p className="login-subtitle">카카오톡으로 간편하게 시작하세요</p>
         </div>
       </div>
