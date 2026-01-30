@@ -1,31 +1,78 @@
 import { useNavigate } from 'react-router-dom'
-import Button from '../components/common/button'
 import './HomePage.css'
+import heartIcon from '../assets/icons/heart.png'
+import profileIcon from '../assets/icons/profile.png'
+import brainIcon from '../assets/icons/brain.png'
+import smartphoneIcon from '../assets/icons/smartphone.png'
+import shopIcon from '../assets/icons/shop.png'
+import starIcon from '../assets/icons/star.png'
 
 export default function HomePage() {
   const navigate = useNavigate()
 
   return (
     <div className="home-page">
-      <Button variant="green" onClick={() => console.log('버튼 1')}>
-        오늘 몸은 어떠신가요?
-      </Button>
-      
-      <Button onClick={() => console.log('버튼 2')}>
-        내 정보 관리
-      </Button>
-      
-      <Button onClick={() => navigate('/game-select')}>
-        일일 두뇌 미션
-      </Button>
-      
-      <Button onClick={() => console.log('버튼 4')}>
-        스마트폰이랑 친해지기
-      </Button>
+      {/* 상단 초록색 섹션 */}
+      <div className="green-header">
+        <h1 className="main-title">
+          오늘 몸은<br />
+          어떠신가요?
+        </h1>
+        <button className="health-check-btn">
+          <div className="health-icon">
+            <img src={heartIcon} alt="heart" />
+          </div>
+          <span>내 상태 확인하기</span>
+        </button>
+      </div>
 
-      <Button onClick={() => console.log('버튼 5')}>
-        건강 식품 쇼핑
-      </Button>
+      {/* 메인 콘텐츠 */}
+      <div className="main-content">
+        {/* 내 정보 관리 + 포인트 카드 */}
+        <div className="info-point-card">
+          <button className="info-menu">
+            <div className="menu-icon green-icon">
+              <img src={profileIcon} alt="profile" />
+            </div>
+            <span>내 정보 관리하기</span>
+          </button>
+
+          {/* 포인트 배지 */}
+          <div className="point-badge">
+            <div className="star-icon">
+              <img src={starIcon} alt="star" />
+            </div>
+            <span className="point-text">1,455 포인트</span>
+          </div>
+        </div>
+
+        {/* 메뉴 카드 */}
+        <div className="menu-card">
+          <button className="menu-item" onClick={() => navigate('/game-select')}>
+            <div className="menu-icon-box green">
+              <img src={brainIcon} alt="brain" />
+            </div>
+            <span>일일 두뇌 미션</span>
+            <span className="arrow">›</span>
+          </button>
+
+          <button className="menu-item">
+            <div className="menu-icon-box cyan">
+              <img src={smartphoneIcon} alt="smartphone" />
+            </div>
+            <span>스마트폰이랑 친해지기</span>
+            <span className="arrow">›</span>
+          </button>
+
+          <button className="menu-item">
+            <div className="menu-icon-box cyan">
+              <img src={shopIcon} alt="shop" />
+            </div>
+            <span>건강 식품 쇼핑</span>
+            <span className="arrow">›</span>
+          </button>
+        </div>
+      </div>
     </div>
   )
 }
