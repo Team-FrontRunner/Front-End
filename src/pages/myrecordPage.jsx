@@ -8,6 +8,8 @@ import { getGameRecords } from '../api/gameRecordsApi'
 export default function MyRecordPage() {
   const navigate = useNavigate()
   const [gameRecords, setGameRecords] = useState([])
+  const [selectedCategory, setSelectedCategory] = useState(null)
+  const [selectedPeriod, setSelectedPeriod] = useState('일주일')
 
   const periodSettings = [
     { label: '일주일' },
@@ -38,6 +40,34 @@ export default function MyRecordPage() {
     fetchGameRecords();
   }, [])
 
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(selectedCategory === category ? null : category)
+  }
+
+  const getPeriodDays = (period) => {
+    const periodMap = {
+      '일주일': 7,
+      '한 달': 30,
+      '반년': 180,
+      '1년': 365
+    }
+    return periodMap[period] || 7
+  }
+
+  const isDateInPeriod = (dateString, days) => {
+    const recordDate = new Date(dateString)
+    const today = new Date()
+    const diffTime = today - recordDate
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+    return diffDays >= 0 && diffDays <= days
+  }
+
+  const filteredRecords = gameRecords.filter(record => {
+    const categoryMatch = !selectedCategory || record.category === selectedCategory
+    const periodMatch = isDateInPeriod(record.played_at, getPeriodDays(selectedPeriod))
+    return categoryMatch && periodMatch
+  })
+
   return (
     <div className="myrecord-page">
       {/* 상단 헤더 */}
@@ -55,7 +85,8 @@ export default function MyRecordPage() {
           {periodSettings.map((item, index) => (
             <button 
               key={index} 
-              className={`tag-button ${index === 0 ? 'active' : ''}`}
+              className={`tag-button ${selectedPeriod === item.label ? 'active' : ''}`}
+              onClick={() => setSelectedPeriod(item.label)}
             >
               {item.label}
             </button>
@@ -68,7 +99,11 @@ export default function MyRecordPage() {
         <h2 className="section-label">카테고리별 보기</h2>
         <div className="button-group">
           {gameCategories.map((item, index) => (
-            <button key={index} className="tag-button">
+            <button 
+              key={index} 
+              className={`tag-button ${selectedCategory === item.label ? 'active' : ''}`}
+              onClick={() => handleCategoryClick(item.label)}
+            >
               {item.label}
             </button>
           ))}
@@ -77,11 +112,12 @@ export default function MyRecordPage() {
 
       {/* 게임 기록 리스트 */}
       <div className="game-records">
-        {gameRecords.map((record, index) => (
+        {filteredRecords.map((record, index) => (
           <div key={index} className="record-card">
             <div className="record-info">
-              <div className="record-datetime">{record.date}</div>
-              <div className="record-points">{record.points}</div>
+              <div className="record-category">{record.category}</div>
+              <div className="record-datetime">{record.played_at}</div>
+              <div className="record-points">{record.gain_point} 포인트</div>
             </div>
           </div>
         ))}

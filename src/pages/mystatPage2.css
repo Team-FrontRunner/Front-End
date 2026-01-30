@@ -42,7 +42,7 @@
 .mystat2-result-card {
   width: 100%;
   max-width: 280px;
-  background: #51B00C;
+  background: #4AB000;
   color: #ffffff;
   border-radius: 22px;
   padding: 18px 16px;
@@ -51,10 +51,63 @@
 
 .mystat2-result-card p {
   margin: 0;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 800;
   line-height: 1.6;
   word-break: keep-all;
+}
+
+.mystat2-speak-button {
+  background: #39780C;
+  color: #ffffff;
+  border: none;
+  border-radius: 24px;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.mystat2-tts-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.mystat2-stop-button {
+  background: #777777;
+  color: #ffffff;
+  border: none;
+  border-radius: 24px;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.mystat2-speak-button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.mystat2-stop-button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.mystat2-speak-button:hover:not(:disabled) {
+  background: #3d9000;
+  transform: translateY(-1px);
+}
+
+.mystat2-stop-button:hover:not(:disabled) {
+  background: #666666;
+  transform: translateY(-1px);
 }
 
 .mystat2-footer {

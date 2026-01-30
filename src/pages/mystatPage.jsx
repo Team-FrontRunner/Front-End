@@ -9,6 +9,7 @@ export default function MyStatPage() {
   const navigate = useNavigate()
   const [healthRecords, setHealthRecords] = useState([])
   const [selectedCategory, setSelectedCategory] = useState(null)
+  const [selectedPeriod, setSelectedPeriod] = useState('일주일')
 
   const periodSettings = [
     { label: '일주일' },
@@ -43,6 +44,34 @@ export default function MyStatPage() {
     setSelectedCategory(selectedCategory === category ? null : category);
   }
 
+  const getPeriodDays = (period) => {
+    const periodMap = {
+      '일주일': 7,
+      '한 달': 30,
+      '반 년': 180,
+      '1년': 365
+    }
+    return periodMap[period] || 7
+  }
+
+  const isDateInPeriod = (dateString, days) => {
+    const recordDate = new Date(dateString)
+    const today = new Date()
+    const diffTime = today - recordDate
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+    return diffDays >= 0 && diffDays <= days
+  }
+
+  const filteredRecordsByPeriod = useMemo(() => {
+    const categoryFiltered = selectedCategory 
+      ? healthRecords.filter(record => record.category === selectedCategory)
+      : healthRecords
+    
+    return categoryFiltered.filter(record => 
+      isDateInPeriod(record.created_at, getPeriodDays(selectedPeriod))
+    )
+  }, [healthRecords, selectedCategory, selectedPeriod])
+
   useEffect(() => {
     const fetchHealthRecords = async () => {
       try {
@@ -71,7 +100,11 @@ export default function MyStatPage() {
         <h2 className="section-label">어느 기간 기록을 볼까요?</h2>
         <div className="button-group">
           {periodSettings.map((item, index) => (
-            <button key={index} className="tag-button">
+            <button 
+              key={index} 
+              className={`tag-button ${selectedPeriod === item.label ? 'active' : ''}`}
+              onClick={() => setSelectedPeriod(item.label)}
+            >
               {item.label}
             </button>
           ))}
@@ -96,7 +129,7 @@ export default function MyStatPage() {
 
       {/* 건강 기록 리스트 */}
       <div className="health-records">
-        {filteredRecords.map((record, index) => (
+        {filteredRecordsByPeriod.map((record, index) => (
           <div key={index} className="record-card">
             <div className="record-date">{record.created_at}</div>
             <div className="record-content">{record.content}</div>

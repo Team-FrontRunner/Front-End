@@ -1,0 +1,106 @@
+.stt-page {
+  min-height: 100%;
+  background: #fffbf0;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20px 24px 20px;
+  box-sizing: border-box;
+}
+
+.stt-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.call-button {
+  width: 140px;
+  height: 140px;
+  background: linear-gradient(135deg, #51B00C 0%, #4AB000 50%, #3d9000 100%);
+  border: 4px solid #ffffff;
+  border-radius: 50%;
+  font-size: 64px;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(74, 176, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.call-button::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(81, 176, 12, 0.3), rgba(61, 144, 0, 0.3));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.call-button:hover::before {
+  opacity: 1;
+}
+
+.call-button:hover {
+  background: linear-gradient(135deg, #5dc210 0%, #51B00C 50%, #449a00 100%);
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 0 15px 40px rgba(74, 176, 0, 0.5), 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.call-button:active {
+  transform: scale(0.97);
+  box-shadow: 0 6px 20px rgba(74, 176, 0, 0.3), 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.transcript-box {
+  width: 100%;
+  max-width: 320px;
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-height: 80px;
+}
+
+.transcript-box p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #333;
+  word-break: keep-all;
+}
+
+.send-button {
+  background: #4AB000;
+  color: #ffffff;
+  border: none;
+  border-radius: 24px;
+  padding: 14px 40px;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(74, 176, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.send-button:hover {
+  background: #3d9000;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(74, 176, 0, 0.4);
+}
+
+.send-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(74, 176, 0, 0.3);
+}
+
+.stt-footer {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 16px;
+}
