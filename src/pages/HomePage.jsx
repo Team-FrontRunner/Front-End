@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './HomePage.css'
 import heartIcon from '../assets/icons/heart.png'
@@ -6,9 +7,24 @@ import brainIcon from '../assets/icons/brain.png'
 import smartphoneIcon from '../assets/icons/smartphone.png'
 import shopIcon from '../assets/icons/shop.png'
 import starIcon from '../assets/icons/star.png'
+import { getUserInfo } from '../api/userApi'
 
 export default function HomePage() {
   const navigate = useNavigate()
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const data = await getUserInfo("f57ce428-5e03-4613-9186-cdbce942ba7a");
+        setUser(data);
+      } catch (error) {
+        console.error('유저 정보 로드 실패:', error);
+      }
+    }
+
+    fetchUser();
+  }, [])
 
   return (
     <div className="home-page">
@@ -42,7 +58,7 @@ export default function HomePage() {
             <div className="star-icon">
               <img src={starIcon} alt="star" />
             </div>
-            <span className="point-text">1,455 포인트</span>
+            <span className="point-text">{(user?.current_point ?? 0).toLocaleString()} 포인트</span>
           </button>
         </div>
 
