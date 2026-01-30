@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import './loginPage.css'
 import kakaoLoginImg from '../assets/icons/kakao_login.png'
+import neulbomImg from '../assets/icons/neulbom.png'
 
 
 export default function LoginPage() {
@@ -14,8 +15,9 @@ export default function LoginPage() {
     <div className="login-page">
       <div className="login-content">
         <div className="login-header">
+          <img src={neulbomImg} alt="늘봄" className="logo-image" />
           <h1 className="login-title">늘 봄</h1>
-          <p className="login-subtitle">카카오톡으로 간편하게 시작하세요</p>
+          <p className="login-subtitle">당신의 매일이 봄날처럼, <br />늘 곁에서 봅니다</p>
         </div>
       </div>
 
