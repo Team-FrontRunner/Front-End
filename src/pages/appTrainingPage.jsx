@@ -33,7 +33,7 @@ const AppSelection = () => {
       imageUrl: '/AppIcon/똑닥.png',
       link: '/ddok'
     },
-    {
+  /*  {
       id: 'gov24',
       name: '정부24',
       description: '주민등록등본 등 서류를 집에서 발급해요',
@@ -41,15 +41,15 @@ const AppSelection = () => {
       shadowColor: '#004484',
       imageUrl: '/AppIcon/정부24.png',
       link: '/gov24-education'
-    },
+    }*/,
     {
-      id: 'doctornow',
-      name: '닥터나우',
-      description: '비대면 진료받고 약 배달까지 신청해요',
+      id: 'TestAPP',
+      name: '시험 보기',
+      description: '여태까지 배워온걸 시험해 봐요!',
       themeColor: '#FF8A00',
       shadowColor: '#D17100',
-      imageUrl: '/AppIcon/닥터나우.png',
-      link: '/doctornow-education'
+      imageUrl: '/AppIcon/TestICON.png',
+      link: '/test-app'
     }
   ];
 
@@ -167,6 +167,10 @@ const AppSelection = () => {
                   navigate(app.link);
                 }
                 else if (app.id === 'ttokddak') {
+                  navigate(app.link);
+                }
+
+                else if (app.id === 'TestAPP') {
                   navigate(app.link);
                 }
 
