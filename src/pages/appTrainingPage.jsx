@@ -182,7 +182,7 @@ const AppSelection = () => {
       </div>
 
       {/* 이미 만들어둔 BackButton 컴포넌트 사용 */}
-      <BackButton onClick={() => navigate(-1)} />
+      <BackButton onClick={() => navigate('/')} />
     </div>
   );
 };
