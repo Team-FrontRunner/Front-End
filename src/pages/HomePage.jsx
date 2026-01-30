@@ -57,7 +57,7 @@ export default function HomePage() {
           </button>
 
           <button className="menu-item">
-            <div className="menu-icon-box cyan" onClick={() => navigate('/training')}>
+            <div className="menu-icon-box cyan">
               <img src={smartphoneIcon} alt="smartphone" />
             </div>
             <span>스마트폰이랑 친해지기</span>
