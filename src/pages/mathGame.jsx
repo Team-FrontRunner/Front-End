@@ -110,7 +110,6 @@ const MathGame = () => {
       backgroundColor: '#FFF', borderRadius: '30px', padding: '30px 20px',
       boxShadow: '0 8px 15px rgba(0,0,0,0.05)', textAlign: 'center', marginBottom: '30px'
     },
-    // --- [수정] 정답 버튼 크기 대폭 확대 ---
     optionBtn: (idx, isCorrect, isWrong) => ({
       width: '100%', 
       padding: '25px 0', // 위아래 여백을 늘려 버튼을 크게 만듦
@@ -118,7 +117,6 @@ const MathGame = () => {
       borderRadius: '25px',
       fontSize: '40px', // 글자 크기를 40px로 확대
       fontWeight: '900', 
-      border: 'none', 
       cursor: 'pointer',
       backgroundColor: isCorrect ? '#DCF17D' : isWrong ? '#FEE2E2' : '#FFFFFF',
       border: isCorrect ? '5px solid #84CC16' : isWrong ? '5px solid #EF4444' : '2px solid #E5E7EB',
