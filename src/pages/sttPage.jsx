@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './sttPage.css'
 import BackButton from '../components/common/backButton'
+import { createHealthRecord } from '../api/healthRecordsApi'
 
 export default function SttPage() {
   const navigate = useNavigate()
@@ -67,14 +68,24 @@ export default function SttPage() {
     recognition.start()
   }
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!transcript.trim()) {
       alert('보낼 내용이 없습니다.')
       return
     }
-    console.log('전송할 텍스트:', transcript)
-    // TODO: 백엔드로 전송 로직 추가
-    alert(`전송: ${transcript}`)
+    
+    try {
+      const healthData = {
+        content: transcript
+      }
+      
+      await createHealthRecord('f57ce428-5e03-4613-9186-cdbce942ba7a', healthData)
+      alert('건강 기록이 저장되었습니다.')
+      setTranscript('')
+    } catch (error) {
+      console.error('전송 실패:', error)
+      alert('저장에 실패했습니다. 다시 시도해주세요.')
+    }
   }
 
   return (

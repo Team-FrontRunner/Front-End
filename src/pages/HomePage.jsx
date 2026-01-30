@@ -89,6 +89,10 @@ export default function HomePage() {
           </button>
         </div>
 
+        {/* 전화 테스트 버튼 */}
+        <button className="phone-test-btn" onClick={() => navigate('/stt')}>
+          전화 테스트
+        </button>
       </div>
     </div>
   )
