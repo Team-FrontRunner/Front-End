@@ -84,9 +84,13 @@ export default function ExchangePage() {
           <h3 className="section-title">바꿀 포인트 입력</h3>
           <div className="input-wrapper">
             <input 
-              type="number" 
-              value={pointToExchange} 
-              onChange={(e) => setPointToExchange(e.target.value)}
+              type="text" // [수정] number 대신 text를 사용해 제어가 더 쉽게 합니다.
+              value={pointToExchange === 0 ? '' : pointToExchange} // [수정] 0일 때는 빈 칸으로 보여 placeholder '0'이 나오게 합니다.
+              onChange={(e) => {
+                // [수정] 숫자만 입력받고, Number()로 변환하여 앞의 '0'을 자동으로 제거합니다.
+                const val = e.target.value.replace(/[^0-9]/g, '');
+                setPointToExchange(val === '' ? 0 : Number(val));
+              }}
               className="points-input"
               placeholder="0"
             />
