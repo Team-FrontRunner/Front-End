@@ -194,7 +194,7 @@ const AppSelection = () => {
         ))}
       </div>
 
-      <BackButton onClick={() => navigate('/')} />
+      <BackButton onClick={() => navigate('/home')} />
     </div>
   );
 };

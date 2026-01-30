@@ -177,7 +177,7 @@ const BrainMissionApp = () => {
 
       {/* 하단 돌아가기 버튼 */}
       <footer style={styles.footer}>
-        <BackButton onClick={() => navigate('/')} />
+        <BackButton onClick={() => navigate('/home')} />
       </footer>
     </div>
   );
