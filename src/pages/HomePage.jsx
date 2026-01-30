@@ -22,7 +22,7 @@ export default function HomePage() {
           <div className="health-icon">
             <img src={heartIcon} alt="heart" />
           </div>
-          <span>내 상태 확인하기</span>
+          <span onClick={() => navigate('/mystat')}>내 건강 기록 확인</span>
         </button>
       </div>
 

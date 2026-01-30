@@ -45,8 +45,8 @@ export default function MyPage() {
           <span className="arrow">›</span>
         </button>
 
-        <button className="menu-item">
-          <span>내 상태 모아보기</span>
+        <button className="menu-item" onClick={() => navigate('/mystat')}>
+          <span>내 건강 기록 모아보기</span>
           <span className="arrow">›</span>
         </button>
 
