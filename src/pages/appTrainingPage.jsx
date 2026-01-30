@@ -22,7 +22,7 @@ const AppSelection = () => {
       themeColor: '#FFCD00',
       shadowColor: '#D1A800',
       imageUrl: '/AppIcon/카카오 T.png',
-      link: '/kakao-taxi-education'
+      link: '/taxi'
     },
     {
       id: 'ttokddak',
@@ -31,7 +31,7 @@ const AppSelection = () => {
       themeColor: '#FFD400',
       shadowColor: '#D1AD00',
       imageUrl: '/AppIcon/똑닥.png',
-      link: '/ttokddak-education'
+      link: '/ddok'
     },
     {
       id: 'gov24',
@@ -162,7 +162,15 @@ const AppSelection = () => {
               onClick={() => {
                 if (app.id === 'navermap') {
                   navigate(app.link);
-                } else {
+                } 
+                else if (app.id === 'kakaotaxi') {
+                  navigate(app.link);
+                }
+                else if (app.id === 'ttokddak') {
+                  navigate(app.link);
+                }
+
+                else {
                   alert('아직 준비중인 서비스입니다.');
                 }
               }}
