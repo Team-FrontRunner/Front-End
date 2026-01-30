@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../components/common/backButton';
+import brainIcon from '../assets/icons/brain2.png';
 
 const BrainMissionApp = () => {
   const navigate = useNavigate();
@@ -30,9 +31,32 @@ const BrainMissionApp = () => {
       border: '1px solid #eee'
     },
     header: {
-      padding: '50px 20px 40px 20px',
+      padding: '40px 20px 24px 20px',
       display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      gap: '16px',
+    },
+    headerIcon: {
+      width: '60px',
+      height: '60px',
+      backgroundColor: '#7FD821',
+      borderRadius: '50%',
+      display: 'flex',
+      alignItems: 'center',
       justifyContent: 'center',
+      flexShrink: 0,
+    },
+    headerIconImage: {
+      width: '60px',
+      height: '60px',
+      objectFit: 'contain',
+    },
+    headerTitle: {
+      margin: 0,
+      fontSize: '35px',
+      fontWeight: '700',
+      color: '#194018',
     },
     grid: {
       display: 'grid',
@@ -65,7 +89,7 @@ const BrainMissionApp = () => {
       fontSize: '30px',
     },
     cardText: {
-      fontSize: '16px',
+      fontSize: '25px',
       fontWeight: '700',
       color: '#444',
     },
@@ -97,27 +121,10 @@ const BrainMissionApp = () => {
     <div style={styles.container}>
       {/* 상단 제목 영역 */}
       <header style={styles.header}>
-        <div style={{
-          backgroundColor: '#1A2E05',
-          padding: '12px 35px',
-          borderRadius: '12px',
-          boxShadow: '0 4px 0 #84CC16',
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '10px'
-        }}>
-          <div style={{ width: '4px', height: '16px', backgroundColor: '#84CC16', borderRadius: '2px' }} />
-          <h1 style={{
-            margin: 0,
-            fontSize: '20px',
-            fontWeight: '900',
-            color: '#FFFFFF',
-            letterSpacing: '3px',
-          }}>
-            일일 두뇌 미션
-          </h1>
-          <div style={{ width: '4px', height: '16px', backgroundColor: '#84CC16', borderRadius: '2px' }} />
+        <div style={styles.headerIcon}>
+          <img src={brainIcon} alt="brain" style={styles.headerIconImage} />
         </div>
+        <h1 style={styles.headerTitle}>일일 두뇌 미션</h1>
       </header>
 
       {/* 미션 카드 그리드 */}
