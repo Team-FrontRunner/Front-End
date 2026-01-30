@@ -13,6 +13,8 @@ import MathGame from './pages/mathGame.jsx'
 import MyStatPage from './pages/mystatPage.jsx'
 import CardMatchGame from './pages/CardMatchGame.jsx'
 import MyRecordPage from './pages/myrecordPage.jsx'
+import ExchangePage from './pages/exchangePage.jsx'
+
 
 function App() {
   return (
@@ -31,6 +33,7 @@ function App() {
         <Route path="/math-game" element={<MathGame />} />
         <Route path="/mystat" element={<MyStatPage />} />
         <Route path="/myrecord" element={<MyRecordPage />} />
+        <Route path="/exchange" element={<ExchangePage />} />
       </Routes>
     </Router>
   )

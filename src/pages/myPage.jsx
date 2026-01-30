@@ -40,7 +40,7 @@ export default function MyPage() {
 
       {/* 메뉴 카드 */}
       <div className="menu-card my-page-menu">
-        <button className="menu-item">
+        <button className="menu-item" onClick={() => navigate('/exchange')}>
           <span>포인트 지역화폐로 바꾸기</span>
           <span className="arrow">›</span>
         </button>
