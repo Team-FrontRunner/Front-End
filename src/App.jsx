@@ -14,6 +14,8 @@ import MyStatPage from './pages/mystatPage.jsx'
 import CardMatchGame from './pages/CardMatchGame.jsx'
 import Poetry from './pages/poetry.jsx'
 import MyRecordPage from './pages/myrecordPage.jsx'
+import ExchangePage from './pages/exchangePage.jsx'
+
 
 
 function App() {
@@ -32,8 +34,13 @@ function App() {
         <Route path="/settings" element={<Settings />} />
         <Route path="/math-game" element={<MathGame />} />
         <Route path="/mystat" element={<MyStatPage />} />
+
         <Route path="/poetry" element={<Poetry />} />
         <Route path="/myrecord" element={<MyRecordPage />} />
+
+        <Route path="/myrecord" element={<MyRecordPage />} />
+        <Route path="/exchange" element={<ExchangePage />} />
+
       </Routes>
     </Router>
   )
