@@ -50,7 +50,7 @@ export default function MyPage() {
           <span className="arrow">›</span>
         </button>
 
-        <button className="menu-item">
+        <button className="menu-item" onClick={() => navigate('/myrecord')}>
           <span>내 게임 기록 보기</span>
           <span className="arrow">›</span>
         </button>

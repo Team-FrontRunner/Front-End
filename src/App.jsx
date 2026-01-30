@@ -11,6 +11,7 @@ import ThirdMap from './pages/NaverMapStudy/ThirdMap.jsx'
 import Settings from './pages/settings.jsx'
 import MyStatPage from './pages/mystatPage.jsx'
 import CardMatchGame from './pages/CardMatchGame.jsx'
+import MyRecordPage from './pages/myrecordPage.jsx'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/jido" element={<ThirdMap/>} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/mystat" element={<MyStatPage />} />
+        <Route path="/myrecord" element={<MyRecordPage />} />
       </Routes>
     </Router>
   )
