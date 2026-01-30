@@ -36,7 +36,7 @@ export default function MyStatPage() {
 
       {/* 기간 설정 섹션 */}
       <div className="mystat-section">
-        <h2 className="section-label">기간 설정</h2>
+        <h2 className="section-label">어느 기간 기록을 볼까요?</h2>
         <div className="button-group">
           {periodSettings.map((item, index) => (
             <button key={index} className="tag-button">
@@ -48,7 +48,7 @@ export default function MyStatPage() {
 
       {/* 카테고리별 보기 섹션 */}
       <div className="mystat-section">
-        <h2 className="section-label">카테고리별 보기</h2>
+        <h2 className="section-label">무슨 종류 기록을 볼까요?</h2>
         <div className="button-group">
           {categoryViews.map((item, index) => (
             <button key={index} className="tag-button">

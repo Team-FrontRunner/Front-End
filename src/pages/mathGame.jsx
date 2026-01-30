@@ -100,7 +100,7 @@ const MathGame = () => {
       height: '110px', 
       marginBottom: '18px', 
       borderRadius: '30px',
-      fontSize: '50px', // 숫자가 시원하게 보임
+      fontSize: '50px',
       fontWeight: '950', 
       cursor: 'pointer',
       backgroundColor: isCorrect ? '#DCF17D' : isWrong ? '#FEE2E2' : '#FFFFFF',

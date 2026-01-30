@@ -45,12 +45,12 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .section-label {
-  font-size: 30px;
-  font-weight: 700;
+  font-size: 35px;
+  font-weight:700;
   margin: 0;
   color: #194018;
 }
@@ -95,20 +95,20 @@
 .record-card {
   background: white;
   border-radius: 12px;
-  padding: 16px;
+  padding: 20px;
   border: 1px solid #e8e8e8;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .record-date {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 600;
   color: #666;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .record-content {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 500;
   color: #333;
   line-height: 1.5;
