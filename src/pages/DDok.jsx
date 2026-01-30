@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// 파일 트리 기준: src/pages/HospitalStudy.jsx 라면 아래 경로가 맞습니다.
 import BackButton from '../components/common/backButton'; 
 
 const HospitalStudy = () => {

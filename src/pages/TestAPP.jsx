@@ -31,7 +31,6 @@ const AppTrainingTest = () => {
     map: {
       name: "네이버 지도",
       steps: [
-        // [수정] gi 사진을 제거하고 chat까지만 진행
         { img: "/MapIMG/FirstMap.jpg", hotspot: { top: '37px', left: '320px', width: '60px', height: '60px' } }, 
         { img: "/MapIMG/gil.jpg", hotspot: { top: '450px', left: '10px', width: '370px', height: '300px' } },      
         { img: "/MapIMG/chat.jpg", hotspot: { bottom: '10px', right: '15px', width: '100px', height: '40px' } },  
@@ -82,7 +81,7 @@ const AppTrainingTest = () => {
     },
     testImg: { width: '100%', height: '100%', objectFit: 'cover' },
     
-    // [수정] 모든 윤곽선(빨간 테두리)을 제거하고 투명하게 설정
+   
     hotspot: (pos) => ({
       position: 'absolute', 
       ...pos, 

@@ -2,13 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../components/common/backButton';
 
-// [수정 1] API 함수를 임포트합니다. (파일 경로에 맞게 수정해주세요)
-// 예: api/game.js 파일에 저장했다면: import { createGameRecord } from '../api/game';
+
 import { createGameRecord } from '../api/gameRecordsApi.js'; 
 
 const CardGame = () => {
   const navigate = useNavigate();
-  // ... (celebrityIcons, wrongMessages 배열은 기존과 동일) ...
+  // 카드 이미지와 이름 데이터
   const celebrityIcons = [
     { name: '임영웅', img: '../cardGameIMG/hero.png' },
     { name: '영탁', img: '../cardGameIMG/zero.png' },
