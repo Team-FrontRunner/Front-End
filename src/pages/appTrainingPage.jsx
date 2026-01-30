@@ -1,5 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+// BackButton 컴포넌트 임포트 (파일 경로를 확인해주세요)
+import BackButton from '../components/common/backButton'; 
 
 const AppSelection = () => {
   const navigate = useNavigate();
@@ -80,7 +82,7 @@ const AppSelection = () => {
       display: 'flex',
       flexDirection: 'column',
       gap: '30px',
-      paddingBottom: '120px' // 돌아가기 버튼 영역 확보
+      paddingBottom: '120px' // 하단 버튼 공간 확보
     },
     appCard: {
       backgroundColor: '#FFFFFF',
@@ -131,29 +133,6 @@ const AppSelection = () => {
       color: 'white',
       cursor: 'pointer',
       transition: 'all 0.1s'
-    },
-    // 하단 중앙 돌아가기 버튼 스타일
-    backBtn: {
-      position: 'fixed',
-      bottom: '40px',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      backgroundColor: '#84CC16',
-      color: 'white',
-      border: 'none',
-      borderRadius: '50px',
-      padding: '15px 40px',
-      fontSize: '22px',
-      fontWeight: '900',
-      boxShadow: '0 8px 20px rgba(132, 204, 22, 0.3)',
-      cursor: 'pointer',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '12px',
-      zIndex: 1000,
-      transition: 'all 0.1s ease',
-      whiteSpace: 'nowrap'
     }
   };
 
@@ -202,20 +181,8 @@ const AppSelection = () => {
         ))}
       </div>
 
-      {/* 하단 중앙 돌아가기 버튼 */}
-      <button 
-        style={styles.backBtn} 
-        onClick={() => navigate(-1)}
-        onMouseDown={(e) => {
-          e.currentTarget.style.transform = 'translateX(-50%) scale(0.95)';
-        }}
-        onMouseUp={(e) => {
-          e.currentTarget.style.transform = 'translateX(-50%) scale(1)';
-        }}
-      >
-        <span style={{ fontSize: '24px', fontWeight: '900' }}>〈</span> 
-        <span>돌아가기</span>
-      </button>
+      {/* 이미 만들어둔 BackButton 컴포넌트 사용 */}
+      <BackButton onClick={() => navigate(-1)} />
     </div>
   );
 };

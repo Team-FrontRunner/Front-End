@@ -1,9 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+// BackButton 컴포넌트 임포트
+import BackButton from '../components/common/backButton'; 
 
 const ShoppingPage = () => {
   const navigate = useNavigate();
 
+  // [백엔드 데이터 샘플]
   const userData = { name: "박정자", points: 5455 };
   const productList = [
     { id: 1, name: "비타민C 3000 10포", price: 10000, status: "품절", imageUrl: "" },
@@ -39,7 +42,7 @@ const ShoppingPage = () => {
       display: 'grid',
       gridTemplateColumns: '1fr 1fr',
       gap: '20px',
-      paddingBottom: '140px' // 버튼에 가려지지 않게 하단 여백 충분히 확보
+      paddingBottom: '140px' // 하단 버튼 공간 확보
     },
     productCard: {
       display: 'flex',
@@ -73,31 +76,7 @@ const ShoppingPage = () => {
       fontSize: '14px',
       fontWeight: '700',
       color: status === '구매 가능' ? '#84CC16' : status === '포인트 부족' ? '#FF5E5E' : '#999'
-    }),
-    
-    // [핵심 수정] 돌아가기 버튼: 화면 정중앙 하단 배치
-    backBtn: {
-      position: 'fixed', // 화면에 고정
-      bottom: '50px',   // 바닥에서 50px 위
-      left: '50%',      // 왼쪽에서 50% 지점
-      transform: 'translateX(-50%)', // 버튼 자신의 너비 절반만큼 왼쪽으로 밀어서 정중앙 맞춤
-      backgroundColor: '#84CC16',
-      color: 'white',
-      border: 'none',
-      borderRadius: '50px',
-      padding: '15px 40px', // 시안처럼 좀 더 길쭉하게 변경
-      fontSize: '22px',
-      fontWeight: '900',
-      boxShadow: '0 10px 20px rgba(132, 204, 22, 0.3)',
-      cursor: 'pointer',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '12px',
-      zIndex: 1000,
-      transition: 'all 0.1s ease',
-      whiteSpace: 'nowrap' // 텍스트 줄바꿈 방지
-    }
+    })
   };
 
   return (
@@ -139,22 +118,8 @@ const ShoppingPage = () => {
         ))}
       </div>
 
-      {/* [수정된 위치] 돌아가기 버튼 */}
-      <button 
-        style={styles.backBtn} 
-        onClick={() => navigate(-1)}
-        onMouseDown={(e) => {
-            e.currentTarget.style.transform = 'translateX(-50%) scale(0.95)';
-            e.currentTarget.style.boxShadow = '0 5px 10px rgba(132, 204, 22, 0.2)';
-        }}
-        onMouseUp={(e) => {
-            e.currentTarget.style.transform = 'translateX(-50%) scale(1)';
-            e.currentTarget.style.boxShadow = '0 10px 20px rgba(132, 204, 22, 0.3)';
-        }}
-      >
-        <span style={{ fontSize: '24px' }}>〈</span> 
-        <span>돌아가기</span>
-      </button>
+      {/* 이미 만들어둔 BackButton 컴포넌트 사용 */}
+      <BackButton onClick={() => navigate(-1)} />
     </div>
   );
 };
