@@ -102,7 +102,7 @@ const MapEducation = () => {
       {/* 2. 길찾기 버튼 */}
       <button 
         style={styles.pathButton} 
-        onClick={() => navigate('/map-path-detail')}
+        onClick={() => navigate('/gilchatgi')}
         onMouseDown={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'}
         onMouseUp={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0)'}
       />
@@ -148,7 +148,7 @@ const MapEducation = () => {
 
       <footer style={{ position: 'absolute', bottom: '30px', left: '30px', zIndex: 30 }}>
         <button 
-          onClick={() => navigate('/brain-mission')}
+          onClick={() => navigate('/')} // 홈으로 이동---연결예정
           style={{
             backgroundColor: '#84CC16',
             color: '#FFFFFF',

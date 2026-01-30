@@ -7,7 +7,8 @@ import MyPage from './pages/myPage'
 import './App.css'
 import CardMatchGame from './pages/cardMatchGame'
 import FirstMap from './pages/NaverMapStudy/FirstMap'
-
+import SecondMap from './pages/NaverMapStudy/SecondMap'
+import ThridMap from './pages/NaverMapStudy/ThridMap'
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         <Route path="/my-page" element={<MyPage />} />
         <Route path="/card-game" element={<CardMatchGame />} />
         <Route path="/map" element={<FirstMap/>} />
+        <Route path="/gilchatgi" element={<SecondMap/>} />
+        <Route path="/jido" element={<ThridMap/>} />
       </Routes>
     </Router>
   )
