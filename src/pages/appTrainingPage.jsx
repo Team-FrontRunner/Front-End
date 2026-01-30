@@ -23,7 +23,7 @@ const AppSelection = () => {
       themeColor: '#FFCD00',
       shadowColor: '#D1A800',
       imageUrl: '/AppIcon/카카오 T.png',
-      link: '/kakao-taxi-education'
+      link: '/taxi'
     },
     {
       id: 'ttokddak',
