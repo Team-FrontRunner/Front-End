@@ -13,7 +13,6 @@ const MathGame = () => {
   const [feedback, setFeedback] = useState(null); 
   const [selectedIdx, setSelectedIdx] = useState(null);
 
-  // --- [수정] 전체 문제 수를 5개로 변경 ---
   const totalQuestions = 5;
 
   const generateQuestion = useCallback(() => {
@@ -96,13 +95,24 @@ const MathGame = () => {
       color: type === 'correct' ? '#16A34A' : '#EF4444',
       display: 'flex', alignItems: 'center', justifyContent: 'center'
     }),
+    // --- [버그 수정 완료] 깔끔하게 정리된 거대 버튼 스타일 ---
     optionBtn: (idx, isCorrect, isWrong) => ({
-      width: '100%', height: '110px', marginBottom: '18px', borderRadius: '30px',
-      fontSize: '50px', fontWeight: '950', cursor: 'pointer',
+      width: '100%', 
+      height: '110px', 
+      marginBottom: '18px', 
+      borderRadius: '30px',
+      fontSize: '50px', // 숫자가 시원하게 보임
+      fontWeight: '950', 
+      cursor: 'pointer',
       backgroundColor: isCorrect ? '#DCF17D' : isWrong ? '#FEE2E2' : '#FFFFFF',
       border: isCorrect ? '6px solid #84CC16' : isWrong ? '6px solid #EF4444' : '3px solid #E5E7EB',
-      color: '#111827', boxShadow: '0 8px 12px rgba(0,0,0,0.08)',
-      transition: 'all 0.1s', outline: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center'
+      color: '#111827', 
+      boxShadow: '0 8px 12px rgba(0,0,0,0.08)',
+      transition: 'all 0.1s', 
+      outline: 'none', 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'center'
     }),
     backButtonWrapper: {
       position: 'absolute', bottom: '40px', left: '20px', pointerEvents: 'none'
@@ -115,7 +125,6 @@ const MathGame = () => {
         <div style={{ textAlign: 'center', marginTop: '130px' }}>
           <span style={{ fontSize: '100px' }}>🧮</span>
           <h1 style={{ fontSize: '36px', fontWeight: '900', margin: '30px 0' }}>반짝반짝 산수 교실</h1>
-          {/* --- [수정] 안내 문구 변경 --- */}
           <p style={{ fontSize: '20px', color: '#6B7280', marginBottom: '40px' }}>5문제를 모두 맞춰보세요!</p>
           <button onClick={startGame} style={{ width: '280px', padding: '25px', backgroundColor: '#84CC16', color: 'white', borderRadius: '60px', border: 'none', fontSize: '28px', fontWeight: '900', boxShadow: '0 8px 0 #65A30D' }}>
             시작하기 🚀
@@ -159,7 +168,6 @@ const MathGame = () => {
           <h1 style={{ fontSize: '32px', fontWeight: '900', marginBottom: '40px' }}>게임 끝!</h1>
           <div style={{ backgroundColor: '#FFF', padding: '40px 20px', borderRadius: '40px', marginBottom: '50px', boxShadow: '0 10px 20px rgba(0,0,0,0.05)' }}>
             <p style={{ fontSize: '22px', color: '#6B7280', marginBottom: '10px' }}>내 점수</p>
-            {/* --- [수정] 5문제 기준 점수 계산 (1문제당 20점) --- */}
             <h2 style={{ fontSize: '64px', fontWeight: '900', color: '#84CC16' }}>{score * 20}점</h2>
             <p style={{ fontSize: '18px', color: '#9CA3AF' }}>{totalQuestions}문제 중 {score}문제 정답!</p>
           </div>

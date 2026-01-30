@@ -1,4 +1,4 @@
-.mystat-page {
+.myrecord-page {
   display: flex;
   flex-direction: column;
   min-height: 100%;
@@ -7,7 +7,7 @@
 }
 
 /* 상단 헤더 */
-.mystat-header {
+.myrecord-header {
   background: #fffbf0;
   padding: 40px 20px 24px 20px;
   display: flex;
@@ -16,10 +16,10 @@
   gap: 16px;
 }
 
-.mystat-icon {
+.myrecord-icon {
   width: 60px;
   height: 60px;
-  background: #FF6B9D;
+  background: #7FD821;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -27,13 +27,13 @@
   flex-shrink: 0;
 }
 
-.mystat-icon img {
+.myrecord-icon img {
   width: 60px;
   height: 60px;
   object-fit: contain;
 }
 
-.mystat-title {
+.myrecord-title {
   font-size: 35px;
   font-weight: 700;
   margin: 0;
@@ -41,7 +41,7 @@
 }
 
 /* 섹션 스타일 */
-.mystat-section {
+.myrecord-section {
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -49,7 +49,7 @@
 }
 
 .section-label {
-  font-size: 30px;
+  font-size: 18px;
   font-weight: 700;
   margin: 0;
   color: #194018;
@@ -62,29 +62,33 @@
 }
 
 .tag-button {
-  background: #84CC16;
+  background: #D4A574;
   color: white;
   border: none;
   border-radius: 20px;
   padding: 8px 16px;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tag-button.active {
+  background: #84CC16;
   box-shadow: 0 2px 8px rgba(132, 204, 22, 0.3);
 }
 
 .tag-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(132, 204, 22, 0.4);
 }
 
 .tag-button:active {
   transform: translateY(0);
 }
 
-/* 건강 기록 리스트 */
-.health-records {
+/* 게임 기록 리스트 */
+.game-records {
   padding: 0 20px 20px 20px;
   display: flex;
   flex-direction: column;
@@ -98,24 +102,31 @@
   padding: 16px;
   border: 1px solid #e8e8e8;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.record-date {
+.record-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.record-datetime {
   font-size: 14px;
   font-weight: 600;
-  color: #666;
-  margin-bottom: 8px;
+  color: #333;
 }
 
-.record-content {
-  font-size: 16px;
+.record-points {
+  font-size: 14px;
   font-weight: 500;
-  color: #333;
-  line-height: 1.5;
+  color: #666;
 }
 
 /* 하단 바닥글 */
-.mystat-footer {
+.myrecord-footer {
   margin-top: auto;
   padding: 40px 30px;
   display: flex;
