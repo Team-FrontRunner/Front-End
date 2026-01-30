@@ -97,7 +97,6 @@ const NumberGame = () => {
     },
     levelText: { fontSize: '22px', fontWeight: '800', color: '#B45309', marginBottom: '10px' },
 
-    // ✅ grid 셀 크기에 맞춰 버튼이 자동으로 들어가도록 수정
     grid: {
       display: 'grid',
       gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
@@ -113,10 +112,9 @@ const NumberGame = () => {
       margin: '0 auto',
     },
 
-    // ✅ numBtn 중복 제거: 딱 1개만 존재
     numBtn: (num, isMatched) => ({
       width: '100%',
-      aspectRatio: '1 / 1', // 정사각형 유지
+      aspectRatio: '1 / 1', 
       borderRadius: '20px',
       fontSize: '32px',
       fontWeight: '900',

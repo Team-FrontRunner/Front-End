@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-// BackButton 컴포넌트 임포트 (파일 경로를 확인해주세요)
 import BackButton from '../components/common/backButton'; 
 
 const AppSelection = () => {
@@ -72,7 +71,7 @@ const AppSelection = () => {
       paddingTop: '20px'
     },
     title: {
-      fontSize: '26px',
+      fontSize: '30px',
       fontWeight: '900',
       color: '#111827',
       lineHeight: '1.4',
@@ -82,7 +81,7 @@ const AppSelection = () => {
       display: 'flex',
       flexDirection: 'column',
       gap: '30px',
-      paddingBottom: '120px' // 하단 버튼 공간 확보
+      paddingBottom: '120px' 
     },
     appCard: {
       backgroundColor: '#FFFFFF',
@@ -110,13 +109,13 @@ const AppSelection = () => {
       boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
     },
     appName: {
-      fontSize: '24px',
+      fontSize: '28px',
       fontWeight: '900',
       color: '#1F2937',
       marginBottom: '8px'
     },
     appDesc: {
-      fontSize: '16px',
+      fontSize: '25px',
       color: '#6B7280',
       fontWeight: '500',
       lineHeight: '1.4',
@@ -128,7 +127,7 @@ const AppSelection = () => {
       padding: '18px 0',
       border: 'none',
       borderRadius: '20px',
-      fontSize: '20px',
+      fontSize: '25px',
       fontWeight: '900',
       color: 'white',
       cursor: 'pointer',
@@ -181,7 +180,6 @@ const AppSelection = () => {
         ))}
       </div>
 
-      {/* 이미 만들어둔 BackButton 컴포넌트 사용 */}
       <BackButton onClick={() => navigate('/')} />
     </div>
   );

@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-// BackButton 컴포넌트 임포트
 import BackButton from '../components/common/backButton'; 
 
 const ShoppingPage = () => {
@@ -42,7 +41,7 @@ const ShoppingPage = () => {
       display: 'grid',
       gridTemplateColumns: '1fr 1fr',
       gap: '20px',
-      paddingBottom: '140px' // 하단 버튼 공간 확보
+      paddingBottom: '140px' 
     },
     productCard: {
       display: 'flex',
@@ -70,8 +69,8 @@ const ShoppingPage = () => {
       height: '75%',
       objectFit: 'contain'
     },
-    productName: { fontSize: '16px', fontWeight: '800', color: '#333', marginBottom: '4px' },
-    productPrice: { fontSize: '18px', fontWeight: '900', color: '#84CC16', marginBottom: '4px' },
+    productName: { fontSize: '22px', fontWeight: '800', color: '#333', marginBottom: '4px' },
+    productPrice: { fontSize: '22px', fontWeight: '900', color: '#84CC16', marginBottom: '4px' },
     statusLabel: (status) => ({
       fontSize: '14px',
       fontWeight: '700',
@@ -83,7 +82,7 @@ const ShoppingPage = () => {
     <div style={styles.container}>
       {/* 포인트 카드 섹션 */}
       <div style={styles.pointCard}>
-        <div style={{ fontSize: '18px', fontWeight: '600', marginBottom: '10px' }}>
+        <div style={{ fontSize: '22px', fontWeight: '600', marginBottom: '10px' }}>
           {userData.name}님의 포인트
         </div>
         <div style={{ fontSize: '36px', fontWeight: '900' }}>
@@ -118,7 +117,6 @@ const ShoppingPage = () => {
         ))}
       </div>
 
-      {/* 이미 만들어둔 BackButton 컴포넌트 사용 */}
       <BackButton onClick={() => navigate(-1)} />
     </div>
   );

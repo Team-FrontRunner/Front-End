@@ -110,7 +110,6 @@ const MapEducation = () => {
 
       {/* 3. 가이드 말풍선들 */}
       
-      {/* [신규] 여기를 눌러보세요 강조 메시지 (기존 메시지 자리에 등장) */}
       <div style={{ 
         ...styles.pointBubble, 
         top: '105px', 
@@ -127,7 +126,6 @@ const MapEducation = () => {
         여기를 눌러보세요!!
       </div>
 
-      {/* [수정] 기존 경로 안내 메시지: 강조 메시지가 뜨면 아래로 이동 */}
       <div style={{ 
         ...styles.guideBubble, 
         top: showPointGuide ? '175px' : '105px', // 강조 메시지 등장 시 아래로 밀려남

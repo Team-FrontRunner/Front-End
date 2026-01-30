@@ -95,7 +95,6 @@ const MathGame = () => {
       color: type === 'correct' ? '#16A34A' : '#EF4444',
       display: 'flex', alignItems: 'center', justifyContent: 'center'
     }),
-    // --- [버그 수정 완료] 깔끔하게 정리된 거대 버튼 스타일 ---
     optionBtn: (idx, isCorrect, isWrong) => ({
       width: '100%', 
       height: '110px', 

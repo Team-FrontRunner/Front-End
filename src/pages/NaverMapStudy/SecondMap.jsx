@@ -37,13 +37,12 @@ const MapPathDetail = () => {
       top: 0, left: 0,
       zIndex: 1,
     },
-    // [확장 수정] "최적" 라벨 위쪽 라인부터 버튼이 시작되도록 좌표 조정
     routeBoxButton: {
       position: 'absolute',
-      top: '445px',      // 490px에서 445px로 위로 올려서 "최적" 글자 위부터 클릭 가능
+      top: '445px',     
       left: '10px',
       width: '370px',    
-      height: '285px',   // 위로 올린 만큼 전체 높이를 285px로 확장 (안내시작 버튼 바로 위까지)
+      height: '285px',   
       backgroundColor: 'transparent',
       border: 'none',
       cursor: 'pointer',

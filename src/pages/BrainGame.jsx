@@ -88,7 +88,6 @@ const BrainGame = () => {
       boxShadow: activeIndex === index ? '0 0 25px #84CC16' : '0 6px 0 #D1D5DB',
       transform: activeIndex === index ? 'scale(0.95)' : 'scale(1)',
     }),
-    // --- [수정] 중앙 버튼 크기를 살짝 줄임 ---
     centerBtn: {
       width: '230px', // 280px -> 230px
       padding: '16px', // 22px -> 16px
@@ -98,7 +97,6 @@ const BrainGame = () => {
       fontWeight: '900', 
       marginTop: '20px' // 여백 조정
     },
-    // --- [수정] 돌아가기 버튼 원래 위치로 ---
     backButtonWrapper: {
       position: 'absolute',
       bottom: '40px',
@@ -158,7 +156,6 @@ const BrainGame = () => {
         )}
       </div>
 
-      {/* --- [수정] 돌아가기 버튼 위치 복구 --- */}
       <div style={styles.backButtonWrapper}>
         <BackButton onClick={() => navigate('/game-select')} />
       </div>

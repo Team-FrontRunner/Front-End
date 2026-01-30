@@ -9,7 +9,6 @@ const OddOneOut = () => {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [score, setScore] = useState(0);
   
-  // --- [추가] 피드백 상태 (null, 'correct', 'wrong') ---
   const [feedback, setFeedback] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(null);
 
@@ -61,7 +60,6 @@ const OddOneOut = () => {
     }
   ];
 
-  // --- [수정] 정답 확인 로직 (1초 대기 추가) ---
   const handleChoice = (isOdd, index) => {
     if (feedback) return; // 이미 피드백 중이면 클릭 무시
 
@@ -100,7 +98,6 @@ const OddOneOut = () => {
     questionText: { fontSize: '26px', fontWeight: '800', color: '#374151', lineHeight: '1.4' },
     grid: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', width: '100%' },
     
-    // --- [수정] 버튼 스타일: 피드백 상태에 따라 배경색 변경 ---
     optionBtn: (isChosen, type) => ({
       height: '150px',
       backgroundColor: isChosen 
@@ -120,7 +117,7 @@ const OddOneOut = () => {
     emojiLarge: { fontSize: '60px', lineHeight: '1', marginBottom: '2px' },
     labelSmall: { fontSize: '22px', fontWeight: '800', color: '#4B5563' },
 
-    // --- [추가] 정답/오답 큰 아이콘 ---
+    // --- 정답/오답 큰 아이콘 ---
     markOverlay: (type) => ({
       position: 'absolute',
       fontSize: '100px',
