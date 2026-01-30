@@ -1,10 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-// 1. BackButton 컴포넌트를 불러옵니다.
 import BackButton from '../components/common/backButton';
+
+// [수정 1] API 함수를 임포트합니다. (파일 경로에 맞게 수정해주세요)
+// 예: api/game.js 파일에 저장했다면: import { createGameRecord } from '../api/game';
+import { createGameRecord } from '../api/gameRecordsApi.js'; 
 
 const CardGame = () => {
   const navigate = useNavigate();
+  // ... (celebrityIcons, wrongMessages 배열은 기존과 동일) ...
   const celebrityIcons = [
     { name: '임영웅', img: '../cardGameIMG/임영웅.png' },
     { name: '영탁', img: '../cardGameIMG/영탁.png' },
@@ -31,6 +35,37 @@ const CardGame = () => {
   const [wrongMessage, setWrongMessage] = useState('');
   const [feedback, setFeedback] = useState({ indices: [], type: '' });
   const timerRef = useRef(null);
+
+  // [수정 2] 게임 종료 시 점수 저장 로직 추가
+  useEffect(() => {
+    if (gameState === 'FINISHED') {
+      const saveScore = async () => {
+        try {
+          // TODO: 실제 로그인한 유저의 ID를 가져오는 로직으로 교체해야 합니다.
+          // (예: localStorage.getItem('userId') 또는 Context API 사용)
+          // 테스트용 ID: f57ce428-5e03-4613-9186-cdbce942ba7a
+          const userId = "f57ce428-5e03-4613-9186-cdbce942ba7a"; 
+          
+          // 점수 계산 (예: 100점에서 걸린 시간(초)을 뺀 점수, 최소 10점)
+          const score = Math.max(10, 100 - timer);
+
+          const gameData = {
+            category: "카드 맞추기",
+            gain_point: score
+          };
+
+          await createGameRecord(userId, gameData);
+          console.log(`게임 기록 저장 완료! 점수: ${score}`);
+        } catch (error) {
+          console.error("게임 기록 저장 중 오류 발생:", error);
+        }
+      };
+      
+      saveScore();
+    }
+  }, [gameState]); // gameState가 변경될 때마다 실행
+
+  // ... (이하 로직은 기존과 동일) ...
 
   const initGame = (e) => {
     if (e) e.stopPropagation();
@@ -74,6 +109,7 @@ const CardGame = () => {
           const updated = [...prev, first, second];
           if (updated.length === cards.length) {
             clearInterval(timerRef.current);
+            // 500ms 뒤에 FINISHED 상태로 변경 -> 이때 useEffect가 실행되어 API 호출됨
             setTimeout(() => setGameState('FINISHED'), 500);
           }
           return updated;
@@ -125,10 +161,13 @@ const CardGame = () => {
         <div style={styles.overlay}>
           <h2 style={{ color: '#84CC16' }}>🎉 미션 성공!</h2>
           <p style={{ fontSize: '30px', margin: '10px 0 20px' }}>기록: {formatTime(timer)}</p>
+          {/* 점수 표시를 원하시면 아래 줄을 추가하세요 */}
+          <p style={{ fontSize: '24px', margin: '0 0 20px', color: '#666' }}>획득 점수: {Math.max(10, 100 - timer)}점</p>
           <button style={styles.startBtn} onClick={initGame}>다시 하기</button>
         </div>
       )}
-
+      
+      {/* ... 나머지 JSX 코드는 기존과 동일 ... */}
       <header style={styles.header}>
         <div style={styles.titleBadge}>
           <h1 style={{ margin: 0, fontSize: '30px' }}>카드 맞추기</h1>
@@ -174,7 +213,6 @@ const CardGame = () => {
         })}
       </main>
 
-      {/* 2. 푸터의 버튼을 컴포넌트로 교체했습니다. */}
       <footer style={{ marginTop: 'auto', padding: '30px', textAlign: 'center' }}>
         <div style={{ fontSize: '30px', fontWeight: 'bold', marginBottom: '20px' }}>
           맞춘 카드: <span style={{ color: '#84CC16' }}>{matchedIndices.length / 2}</span> / 8
