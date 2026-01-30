@@ -1,0 +1,33 @@
+.back-button {
+  background: linear-gradient(135deg, #51B00C 0%, #57CC02 100%);
+  border: none;
+  border-radius: 30px;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: white;
+  font-size: 27px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(81, 176, 12, 0.3);
+  width: 160px;
+  height: 55px;
+}
+
+.back-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(81, 176, 12, 0.4);
+}
+
+.back-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(81, 176, 12, 0.3);
+}
+
+.back-arrow {
+  font-size: 25px;
+  font-weight: 700;
+}

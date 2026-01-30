@@ -38,12 +38,12 @@ export default function HomePage() {
           </button>
 
           {/* 포인트 배지 */}
-          <div className="point-badge">
+          <button className="point-badge" onClick={() => navigate('/my-page')}>
             <div className="star-icon">
               <img src={starIcon} alt="star" />
             </div>
             <span className="point-text">1,455 포인트</span>
-          </div>
+          </button>
         </div>
 
         {/* 메뉴 카드 */}

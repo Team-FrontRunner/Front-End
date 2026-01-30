@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import BackButton from '../components/common/backButton';
 
 const BrainMissionApp = () => {
   const navigate = useNavigate();
@@ -148,23 +149,9 @@ const BrainMissionApp = () => {
         ))}
       </main>
 
-      {/* 하단 돌아가기 버튼 (이미지 디자인 적용) */}
+      {/* 하단 돌아가기 버튼 */}
       <footer style={styles.footer}>
-        <button 
-          onClick={() => navigate('/')}
-          style={styles.customButton}
-          onMouseDown={(e) => {
-            e.currentTarget.style.transform = 'translateY(2px)';
-            e.currentTarget.style.boxShadow = '0 2px 0 #65A30D';
-          }}
-          onMouseUp={(e) => {
-            e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = '0 4px 0 #65A30D';
-          }}
-        >
-          <span style={{ fontSize: '20px', fontWeight: '900' }}>〈</span>
-          돌아가기
-        </button>
+        <BackButton onClick={() => navigate('/')} />
       </footer>
     </div>
   );
