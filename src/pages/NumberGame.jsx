@@ -161,6 +161,12 @@ const NumberGame = () => {
       boxShadow: '0 8px 0 #9A3412',
       cursor: 'pointer',
     },
+    // 하단 푸터 스타일 수정
+    footer: {
+      padding: '20px 30px 40px',
+      position: 'relative', // 쌓임 맥락 생성
+      zIndex: 110,          // 오버레이(100)보다 높게 설정
+    }
   };
 
   return (
@@ -246,7 +252,8 @@ const NumberGame = () => {
         </div>
       )}
 
-      <footer style={{ padding: '20px 30px 40px' }}>
+      {/* 뒤로가기 버튼이 항상 오버레이 위에 오도록 footer 스타일 적용 */}
+      <footer style={styles.footer}>
         <BackButton onClick={() => navigate('/game-select')} />
       </footer>
     </div>
