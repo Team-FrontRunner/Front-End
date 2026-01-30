@@ -19,31 +19,19 @@ const BrainMissionApp = () => {
     container: {
       width: '390px',
       height: '844px',
-      backgroundColor: '#FFFFFF',
-      margin: '0 auto', // 중앙 정렬
+      backgroundColor: '#FDFBEE',
+      margin: '0 auto',
       display: 'flex',
       flexDirection: 'column',
       fontFamily: '"Pretendard", sans-serif',
       boxSizing: 'border-box',
       overflow: 'hidden',
-      border: '1px solid #eee' // 실제 영역 확인용 아주 연한 선
+      border: '1px solid #eee'
     },
     header: {
-      padding: '60px 20px 30px 20px',
+      padding: '50px 20px 40px 20px',
       display: 'flex',
       justifyContent: 'center',
-    },
-    titleBadge: {
-      backgroundColor: '#F0F0F0',
-      padding: '10px 30px',
-      borderRadius: '8px',
-    },
-    title: {
-      margin: 0,
-      fontSize: '24px',
-      fontWeight: 'bold',
-      color: '#333',
-      letterSpacing: '2px',
     },
     grid: {
       display: 'grid',
@@ -63,11 +51,12 @@ const BrainMissionApp = () => {
       border: '1px solid #EAEAEA',
       boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
       cursor: 'pointer',
+      transition: 'all 0.2s ease',
     },
     iconBox: {
       width: '60px',
       height: '60px',
-      backgroundColor: '#F7FEE7', // 매우 연한 연두색 배경
+      backgroundColor: '#F7FEE7',
       borderRadius: '16px',
       display: 'flex',
       alignItems: 'center',
@@ -82,51 +71,50 @@ const BrainMissionApp = () => {
     footer: {
       marginTop: 'auto',
       padding: '40px 30px',
+      display: 'flex',
+      justifyContent: 'flex-start',
     },
-    backButton: {
-      background: 'none',
+    // 이미지 기반 커스텀 버튼 스타일
+    customButton: {
+      backgroundColor: '#84CC16',
+      color: '#FFFFFF',
       border: 'none',
-      fontSize: '20px',
-      fontWeight: '800',
-      color: '#333',
+      borderRadius: '50px',
+      padding: '12px 25px',
+      fontSize: '18px',
+      fontWeight: 'bold',
       cursor: 'pointer',
       display: 'flex',
       alignItems: 'center',
-      gap: '8px',
-    },
-    pointColor: {
-      color: '#84CC16' // 포인트 연두색
+      gap: '10px',
+      boxShadow: '0 4px 0 #65A30D',
+      transition: 'transform 0.1s ease',
     }
   };
 
   return (
     <div style={styles.container}>
       {/* 상단 제목 영역 */}
-      <header style={{ ...styles.header, padding: '50px 20px 40px 20px' }}>
+      <header style={styles.header}>
         <div style={{
-          backgroundColor: '#1A2E05', // 어두운 배경으로 무게감 부여
+          backgroundColor: '#1A2E05',
           padding: '12px 35px',
           borderRadius: '12px',
-          position: 'relative',
-          boxShadow: '0 4px 0 #84CC16', // 하단에 연두색 두께감 추가
+          boxShadow: '0 4px 0 #84CC16',
           display: 'inline-flex',
           alignItems: 'center',
           gap: '10px'
         }}>
-          {/* 장식용 바 */}
           <div style={{ width: '4px', height: '16px', backgroundColor: '#84CC16', borderRadius: '2px' }} />
-          
           <h1 style={{
             margin: 0,
             fontSize: '20px',
             fontWeight: '900',
-            color: '#FFFFFF', // 글자는 흰색으로 대비
+            color: '#FFFFFF',
             letterSpacing: '3px',
-            textShadow: '1px 1px 0 rgba(0,0,0,0.2)'
           }}>
             일일 두뇌 미션
           </h1>
-
           <div style={{ width: '4px', height: '16px', backgroundColor: '#84CC16', borderRadius: '2px' }} />
         </div>
       </header>
@@ -137,6 +125,14 @@ const BrainMissionApp = () => {
           <div 
             key={m.id} 
             style={styles.card}
+            onClick={() => {
+              // '카드 맞추기' 클릭 시 이동 로직
+              if (m.id === 1) {
+                navigate('/card-game'); 
+              } else {
+                alert(`${m.title} 서비스는 준비 중입니다.`);
+              }
+            }}
             onMouseEnter={(e) => {
               e.currentTarget.style.borderColor = '#84CC16';
               e.currentTarget.style.transform = 'translateY(-2px)';
@@ -152,15 +148,22 @@ const BrainMissionApp = () => {
         ))}
       </main>
 
-      {/* 하단 돌아가기 */}
+      {/* 하단 돌아가기 버튼 (이미지 디자인 적용) */}
       <footer style={styles.footer}>
         <button 
-          style={styles.backButton}
           onClick={() => navigate('/')}
-          onMouseEnter={(e) => e.currentTarget.style.color = '#84CC16'}
-          onMouseLeave={(e) => e.currentTarget.style.color = '#333'}
+          style={styles.customButton}
+          onMouseDown={(e) => {
+            e.currentTarget.style.transform = 'translateY(2px)';
+            e.currentTarget.style.boxShadow = '0 2px 0 #65A30D';
+          }}
+          onMouseUp={(e) => {
+            e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.boxShadow = '0 4px 0 #65A30D';
+          }}
         >
-          <span style={{ fontSize: '24px' }}>⬅</span> 돌아가기
+          <span style={{ fontSize: '20px', fontWeight: '900' }}>〈</span>
+          돌아가기
         </button>
       </footer>
     </div>
