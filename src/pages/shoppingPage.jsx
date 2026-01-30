@@ -117,7 +117,7 @@ const ShoppingPage = () => {
         ))}
       </div>
 
-      <BackButton onClick={() => navigate(-1)} />
+      <BackButton onClick={() => navigate('/home')} />
     </div>
   );
 };
