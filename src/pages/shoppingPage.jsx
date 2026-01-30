@@ -1,20 +1,94 @@
-import React from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import BackButton from '../components/common/backButton'; 
+import BackButton from '../components/common/backButton';
+import { getUserInfo } from '../api/userApi';
+import { getProducts } from '../api/productsApi';
+import { createOrder } from '../api/orderApi'; 
 
 const ShoppingPage = () => {
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [userData, productsData] = await Promise.all([
+          getUserInfo("f57ce428-5e03-4613-9186-cdbce942ba7a"),
+          getProducts()
+        ]);
+        setUser(userData);
+        setProducts(productsData);
+      } catch (error) {
+        console.error('데이터 로드 실패:', error);
+      }
+    }
+
+    fetchData();
+  }, []);
 
   // [백엔드 데이터 샘플]
-  const userData = { name: "박정자", points: 5455 };
-  const productList = [
-    { id: 1, name: "비타민C 3000 10포", price: 10000, status: "품절", imageUrl: "" },
-    { id: 2, name: "관절엔 콘드로이친", price: 20000, status: "포인트 부족", imageUrl: "" },
-    { id: 3, name: "델몬트 바나나 1송이", price: 5000, status: "구매 가능", imageUrl: "" },
-    { id: 4, name: "논산 설향 딸기 15개", price: 20000, status: "포인트 부족", imageUrl: "" },
-    { id: 5, name: "홍삼진액 세트", price: 35000, status: "포인트 부족", imageUrl: "" },
-    { id: 6, name: "유기농 구운란 10알", price: 6000, status: "포인트 부족", imageUrl: "" },
-  ];
+  const userData = { name: user?.name || "사용자", points: user?.current_point || 0 };
+  
+  // 상품 목록에 status 추가 (품절, 포인트 부족, 구매 가능)
+  const productList = useMemo(() => {
+    return products.map(product => {
+      let status;
+      if (product.quantity === 0) {
+        status = "품절";
+      } else if (product.price > userData.points) {
+        status = "포인트 부족";
+      } else {
+        status = "구매 가능";
+      }
+      
+      return {
+        id: product.item_id,
+        item_id: product.item_id,
+        name: product.name,
+        price: product.price,
+        status: status,
+        imageUrl: product.image_url || ""
+      };
+    });
+  }, [products, userData.points]);
+
+  const handleOrderClick = async (item) => {
+    // 구매 불가능한 경우 처리
+    if (item.status === "품절") {
+      alert("죄송합니다. 현재 품절된 상품입니다.");
+      return;
+    }
+    if (item.status === "포인트 부족") {
+      alert("포인트가 부족합니다.");
+      return;
+    }
+
+    const confirmed = window.confirm(`${item.name}을(를) ${item.price.toLocaleString()}P에 구매하시겠습니까?`);
+    if (!confirmed) return;
+
+    try {
+      const orderData = {
+        user_id: "f57ce428-5e03-4613-9186-cdbce942ba7a",
+        item_id: item.item_id,
+        used_point: item.price
+      };
+
+      await createOrder("f57ce428-5e03-4613-9186-cdbce942ba7a", orderData);
+      alert(`구매가 완료되었습니다!\n사용 포인트: ${item.price.toLocaleString()}P`);
+      
+      // 데이터 재로드
+      const [userData, productsData] = await Promise.all([
+        getUserInfo("f57ce428-5e03-4613-9186-cdbce942ba7a"),
+        getProducts()
+      ]);
+      setUser(userData);
+      setProducts(productsData);
+    } catch (error) {
+      console.error('주문 실패:', error);
+      alert('주문에 실패했습니다. 다시 시도해주세요.');
+    }
+  };
 
   const styles = {
     container: {
@@ -29,7 +103,7 @@ const ShoppingPage = () => {
       boxSizing: 'border-box'
     },
     pointCard: {
-      backgroundColor: '#84CC16',
+      backgroundColor: '#4AB000',
       borderRadius: '24px',
       padding: '25px',
       color: 'white',
@@ -69,10 +143,10 @@ const ShoppingPage = () => {
       height: '75%',
       objectFit: 'contain'
     },
-    productName: { fontSize: '22px', fontWeight: '800', color: '#333', marginBottom: '4px' },
-    productPrice: { fontSize: '22px', fontWeight: '900', color: '#84CC16', marginBottom: '4px' },
+    productName: { fontSize: '24px', fontWeight: '800', color: '#333', marginBottom: '4px' },
+    productPrice: { fontSize: '23px', fontWeight: '900', color: '#84CC16', marginBottom: '4px' },
     statusLabel: (status) => ({
-      fontSize: '14px',
+      fontSize: '19px',
       fontWeight: '700',
       color: status === '구매 가능' ? '#84CC16' : status === '포인트 부족' ? '#FF5E5E' : '#999'
     })
@@ -82,10 +156,10 @@ const ShoppingPage = () => {
     <div style={styles.container}>
       {/* 포인트 카드 섹션 */}
       <div style={styles.pointCard}>
-        <div style={{ fontSize: '22px', fontWeight: '600', marginBottom: '10px' }}>
+        <div style={{ fontSize: '25px', fontWeight: '600', marginBottom: '10px',color: '#FDFBEE' }}>
           {userData.name}님의 포인트
         </div>
-        <div style={{ fontSize: '36px', fontWeight: '900' }}>
+        <div style={{ fontSize: '37px', fontWeight: '900', color: '#FDFBEE' }}>
           {userData.points.toLocaleString()} P
         </div>
       </div>
@@ -96,7 +170,7 @@ const ShoppingPage = () => {
           <div key={item.id} style={styles.productCard}>
             <button 
               style={styles.imageButton}
-              onClick={() => console.log(`${item.name} 클릭`)}
+              onClick={() => handleOrderClick(item)}
               onMouseDown={(e) => {
                 e.currentTarget.style.transform = 'scale(0.96)';
               }}
