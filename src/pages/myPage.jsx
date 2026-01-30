@@ -1,11 +1,28 @@
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './myPage.css'
 import BackButton from '../components/common/backButton'
 import grandmaIcon from '../assets/icons/grandma.png'
 import starIcon from '../assets/icons/star.png'
+import { getUserInfo } from '../api/userApi'
 
 export default function MyPage() {
   const navigate = useNavigate()
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    const fetchUser = async () => {
+  try {
+    const data = await getUserInfo("f57ce428-5e03-4613-9186-cdbce942ba7a");
+    console.log('User data:', data); 
+    setUser(data);
+  } catch (error) {
+    console.error('유저 정보 로드 실패:', error);
+  }
+}
+
+    fetchUser();
+  }, [])
 
   return (
     <div className="my-page">
@@ -13,10 +30,10 @@ export default function MyPage() {
       <div className="profile-header">
         <div className="profile-greeting">
           <div className="profile-icon">
-            <img src={grandmaIcon} alt="grandma" />
+            <img src={user?.profile_image || grandmaIcon} alt="profile" />
           </div>
           <div className="greeting-text">
-            <h2>박정자님!</h2>
+            <h2>{user?.name}님!</h2>
             <p>안녕하세요!</p>
           </div>
         </div>
@@ -29,7 +46,9 @@ export default function MyPage() {
             <img src={starIcon} alt="star" />
           </div>
           <p className="point-label">이만큼 모으셨어요!</p>
-          <h3 className="point-amount">1,455 포인트</h3>
+          <h3 className="point-amount">
+            {(user?.current_point ?? 0).toLocaleString()} 포인트
+          </h3>
         </div>
 
         <div className="point-card secondary">
