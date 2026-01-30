@@ -56,7 +56,7 @@ export default function HomePage() {
             <span className="arrow">›</span>
           </button>
 
-          <button className="menu-item">
+          <button className="menu-item" onClick={() => navigate('/training')}>
             <div className="menu-icon-box cyan">
               <img src={smartphoneIcon} alt="smartphone" />
             </div>
@@ -64,7 +64,7 @@ export default function HomePage() {
             <span className="arrow">›</span>
           </button>
 
-          <button className="menu-item">
+          <button className="menu-item" onClick={() => navigate('/shopping')}>
             <div className="menu-icon-box cyan">
               <img src={shopIcon} alt="shop" />
             </div>

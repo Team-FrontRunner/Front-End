@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 const ShoppingPage = () => {
   const navigate = useNavigate();
 
-  // [백엔드 데이터 샘플]
   const userData = { name: "박정자", points: 5455 };
   const productList = [
     { id: 1, name: "비타민C 3000 10포", price: 10000, status: "품절", imageUrl: "" },
@@ -40,28 +39,27 @@ const ShoppingPage = () => {
       display: 'grid',
       gridTemplateColumns: '1fr 1fr',
       gap: '20px',
-      paddingBottom: '120px'
+      paddingBottom: '140px' // 버튼에 가려지지 않게 하단 여백 충분히 확보
     },
     productCard: {
       display: 'flex',
       flexDirection: 'column',
     },
-    // [수정] 클릭 가능한 사진 박스 스타일
     imageButton: {
       width: '100%',
       aspectRatio: '1 / 1',
       backgroundColor: '#FFFFFF',
-      borderRadius: '24px', // 좀 더 둥글게 수정
+      borderRadius: '24px',
       marginBottom: '12px',
       boxShadow: '0 6px 12px rgba(0,0,0,0.08)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       overflow: 'hidden',
-      border: 'none', // 버튼 기본 테두리 제거
+      border: 'none',
       cursor: 'pointer',
       padding: 0,
-      transition: 'transform 0.1s ease, box-shadow 0.1s ease', // 애니메이션 추가
+      transition: 'all 0.1s ease',
       outline: 'none'
     },
     productImage: {
@@ -76,39 +74,35 @@ const ShoppingPage = () => {
       fontWeight: '700',
       color: status === '구매 가능' ? '#84CC16' : status === '포인트 부족' ? '#FF5E5E' : '#999'
     }),
+    
+    // [핵심 수정] 돌아가기 버튼: 화면 정중앙 하단 배치
     backBtn: {
-      position: 'fixed',
-      bottom: '40px',
-      left: '30px',
+      position: 'fixed', // 화면에 고정
+      bottom: '50px',   // 바닥에서 50px 위
+      left: '50%',      // 왼쪽에서 50% 지점
+      transform: 'translateX(-50%)', // 버튼 자신의 너비 절반만큼 왼쪽으로 밀어서 정중앙 맞춤
       backgroundColor: '#84CC16',
       color: 'white',
       border: 'none',
       borderRadius: '50px',
-      padding: '12px 25px',
+      padding: '15px 40px', // 시안처럼 좀 더 길쭉하게 변경
       fontSize: '22px',
       fontWeight: '900',
-      boxShadow: '0 6px 15px rgba(132, 204, 22, 0.4)',
+      boxShadow: '0 10px 20px rgba(132, 204, 22, 0.3)',
       cursor: 'pointer',
       display: 'flex',
       alignItems: 'center',
-      gap: '10px',
-      zIndex: 1000
-    }
-  };
-
-  // 사진 클릭 시 실행될 함수
-  const handleProductClick = (product) => {
-    if (product.status === '품절') {
-      alert('이 상품은 현재 품절 상태입니다.');
-    } else {
-      // 상세 페이지로 이동하거나 구매 모달을 띄우는 로직
-      console.log(`${product.name} 클릭됨`);
-      // navigate(`/product/${product.id}`); // 예시 주소
+      justifyContent: 'center',
+      gap: '12px',
+      zIndex: 1000,
+      transition: 'all 0.1s ease',
+      whiteSpace: 'nowrap' // 텍스트 줄바꿈 방지
     }
   };
 
   return (
     <div style={styles.container}>
+      {/* 포인트 카드 섹션 */}
       <div style={styles.pointCard}>
         <div style={{ fontSize: '18px', fontWeight: '600', marginBottom: '10px' }}>
           {userData.name}님의 포인트
@@ -118,22 +112,17 @@ const ShoppingPage = () => {
         </div>
       </div>
 
+      {/* 상품 그리드 섹션 */}
       <div style={styles.productGrid}>
         {productList.map((item) => (
           <div key={item.id} style={styles.productCard}>
-            {/* [수정] 이미지 박스를 버튼으로 변경 */}
             <button 
               style={styles.imageButton}
-              onClick={() => handleProductClick(item)}
+              onClick={() => console.log(`${item.name} 클릭`)}
               onMouseDown={(e) => {
-                e.currentTarget.style.transform = 'scale(0.95)'; // 누르면 작아짐
-                e.currentTarget.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+                e.currentTarget.style.transform = 'scale(0.96)';
               }}
               onMouseUp={(e) => {
-                e.currentTarget.style.transform = 'scale(1)'; // 떼면 복구
-                e.currentTarget.style.boxShadow = '0 6px 12px rgba(0,0,0,0.08)';
-              }}
-              onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'scale(1)';
               }}
             >
@@ -143,7 +132,6 @@ const ShoppingPage = () => {
                 <div style={{ color: '#DDD', fontSize: '45px' }}>🖼️</div>
               )}
             </button>
-            
             <div style={styles.productName}>{item.name}</div>
             <div style={styles.productPrice}>{item.price.toLocaleString()} P</div>
             <div style={styles.statusLabel(item.status)}>{item.status}</div>
@@ -151,8 +139,21 @@ const ShoppingPage = () => {
         ))}
       </div>
 
-      <button style={styles.backBtn} onClick={() => navigate(-1)}>
-        <span>〈</span> 돌아가기
+      {/* [수정된 위치] 돌아가기 버튼 */}
+      <button 
+        style={styles.backBtn} 
+        onClick={() => navigate(-1)}
+        onMouseDown={(e) => {
+            e.currentTarget.style.transform = 'translateX(-50%) scale(0.95)';
+            e.currentTarget.style.boxShadow = '0 5px 10px rgba(132, 204, 22, 0.2)';
+        }}
+        onMouseUp={(e) => {
+            e.currentTarget.style.transform = 'translateX(-50%) scale(1)';
+            e.currentTarget.style.boxShadow = '0 10px 20px rgba(132, 204, 22, 0.3)';
+        }}
+      >
+        <span style={{ fontSize: '24px' }}>〈</span> 
+        <span>돌아가기</span>
       </button>
     </div>
   );
