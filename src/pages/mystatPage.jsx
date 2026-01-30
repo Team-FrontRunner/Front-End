@@ -1,10 +1,13 @@
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './mystatPage.css'
 import BackButton from '../components/common/backButton'
 import heartIcon from '../assets/icons/heart.png'
+import { getHealthRecords } from '../api/healthRecordsApi'
 
 export default function MyStatPage() {
   const navigate = useNavigate()
+  const [healthRecords, setHealthRecords] = useState([])
 
   const periodSettings = [
     { label: '일주일' },
@@ -19,10 +22,18 @@ export default function MyStatPage() {
     { label: '관절 통증(3)' },
   ]
 
-  const healthRecords = [
-    { date: '2026년 01월 02일', content: '오늘 날씨가 너무 추운 것 같아' },
-    { date: '2026년 01월 03일', content: '왜이렇게 추운겨' },
-  ]
+  useEffect(() => {
+    const fetchHealthRecords = async () => {
+      try {
+        const data = await getHealthRecords("f57ce428-5e03-4613-9186-cdbce942ba7a");
+        setHealthRecords(data);
+      } catch (error) {
+        console.error('건강 기록 로드 실패:', error);
+      }
+    }
+
+    fetchHealthRecords();
+  }, [])
 
   return (
     <div className="mystat-page">
