@@ -148,7 +148,7 @@ const MapEducation = () => {
 
       <footer style={{ position: 'absolute', bottom: '30px', left: '30px', zIndex: 30 }}>
         <button 
-          onClick={() => navigate('/')} // 홈으로 이동---연결예정
+          onClick={() => navigate('/training')} // 홈으로 이동---연결예정
           style={{
             backgroundColor: '#84CC16',
             color: '#FFFFFF',
