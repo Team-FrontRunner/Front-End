@@ -4,13 +4,12 @@ import { useNavigate } from 'react-router-dom';
 const AppSelection = () => {
   const navigate = useNavigate();
 
-  // 실제 AppIcon 폴더 내 이미지 파일명을 매칭한 데이터
   const appsData = [
     {
       id: 'navermap',
       name: '네이버 지도',
       description: '길찾기와 버스·지하철 정보를 확인해요',
-      themeColor: '#2DB400', // 네이버 아이콘의 선명한 초록색
+      themeColor: '#2DB400',
       shadowColor: '#248F00',
       imageUrl: '/AppIcon/네이버 지도.png',
       link: '/map'
@@ -19,7 +18,7 @@ const AppSelection = () => {
       id: 'kakaotaxi',
       name: '카카오 T (택시)',
       description: '내 위치로 택시를 부르고 결제까지 해요',
-      themeColor: '#FFCD00', // 카카오 노랑
+      themeColor: '#FFCD00',
       shadowColor: '#D1A800',
       imageUrl: '/AppIcon/카카오 T.png',
       link: '/kakao-taxi-education'
@@ -28,7 +27,7 @@ const AppSelection = () => {
       id: 'ttokddak',
       name: '똑닥',
       description: '병원 대기 없이 스마트폰으로 줄서기해요',
-      themeColor: '#FFD400', // 보내주신 노란색 아이콘 배경색에 맞춤
+      themeColor: '#FFD400',
       shadowColor: '#D1AD00',
       imageUrl: '/AppIcon/똑닥.png',
       link: '/ttokddak-education'
@@ -37,7 +36,7 @@ const AppSelection = () => {
       id: 'gov24',
       name: '정부24',
       description: '주민등록등본 등 서류를 집에서 발급해요',
-      themeColor: '#0055A5', // 정부24 신뢰의 파란색
+      themeColor: '#0055A5',
       shadowColor: '#004484',
       imageUrl: '/AppIcon/정부24.png',
       link: '/gov24-education'
@@ -46,7 +45,7 @@ const AppSelection = () => {
       id: 'doctornow',
       name: '닥터나우',
       description: '비대면 진료받고 약 배달까지 신청해요',
-      themeColor: '#FF8A00', // 오렌지색 아이콘 배경색에 맞춤
+      themeColor: '#FF8A00',
       shadowColor: '#D17100',
       imageUrl: '/AppIcon/닥터나우.png',
       link: '/doctornow-education'
@@ -81,7 +80,7 @@ const AppSelection = () => {
       display: 'flex',
       flexDirection: 'column',
       gap: '30px',
-      paddingBottom: '50px'
+      paddingBottom: '120px' // 돌아가기 버튼 영역 확보
     },
     appCard: {
       backgroundColor: '#FFFFFF',
@@ -93,9 +92,8 @@ const AppSelection = () => {
       alignItems: 'center',
       textAlign: 'center'
     },
-    // 아이콘 이미지가 들어가는 박스
     imageContainer: {
-      width: '140px', // 아이콘을 돋보이게 하기 위해 크기 조정
+      width: '140px',
       height: '140px',
       marginBottom: '20px',
       display: 'flex',
@@ -106,7 +104,7 @@ const AppSelection = () => {
       width: '100%',
       height: '100%',
       objectFit: 'contain',
-      borderRadius: '30px', // 앱 아이콘 특유의 둥근 모서리
+      borderRadius: '30px',
       boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
     },
     appName: {
@@ -133,6 +131,29 @@ const AppSelection = () => {
       color: 'white',
       cursor: 'pointer',
       transition: 'all 0.1s'
+    },
+    // 하단 중앙 돌아가기 버튼 스타일
+    backBtn: {
+      position: 'fixed',
+      bottom: '40px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      backgroundColor: '#84CC16',
+      color: 'white',
+      border: 'none',
+      borderRadius: '50px',
+      padding: '15px 40px',
+      fontSize: '22px',
+      fontWeight: '900',
+      boxShadow: '0 8px 20px rgba(132, 204, 22, 0.3)',
+      cursor: 'pointer',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '12px',
+      zIndex: 1000,
+      transition: 'all 0.1s ease',
+      whiteSpace: 'nowrap'
     }
   };
 
@@ -145,15 +166,13 @@ const AppSelection = () => {
       <div style={styles.cardList}>
         {appsData.map((app) => (
           <div key={app.id} style={styles.appCard}>
-            
-            {/* 실제 앱 아이콘 이미지 적용 */}
             <div style={styles.imageContainer}>
               <img 
                 src={app.imageUrl} 
                 alt={app.name} 
                 style={styles.appIcon}
                 onError={(e) => {
-                  e.target.src = "https://via.placeholder.com/140?text=Icon+Error"; // 이미지 로드 실패 시 대체
+                  e.target.src = "https://via.placeholder.com/140?text=Icon+Error";
                 }}
               />
             </div>
@@ -182,6 +201,21 @@ const AppSelection = () => {
           </div>
         ))}
       </div>
+
+      {/* 하단 중앙 돌아가기 버튼 */}
+      <button 
+        style={styles.backBtn} 
+        onClick={() => navigate(-1)}
+        onMouseDown={(e) => {
+          e.currentTarget.style.transform = 'translateX(-50%) scale(0.95)';
+        }}
+        onMouseUp={(e) => {
+          e.currentTarget.style.transform = 'translateX(-50%) scale(1)';
+        }}
+      >
+        <span style={{ fontSize: '24px', fontWeight: '900' }}>〈</span> 
+        <span>돌아가기</span>
+      </button>
     </div>
   );
 };
