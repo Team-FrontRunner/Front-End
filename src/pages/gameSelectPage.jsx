@@ -1,6 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const BrainMissionApp = () => {
+  const navigate = useNavigate();
+  
   // 데이터 배열
   const missions = [
     { id: 1, title: '카드 맞추기', icon: '🎴' },
@@ -130,6 +133,7 @@ const BrainMissionApp = () => {
       <footer style={styles.footer}>
         <button 
           style={styles.backButton}
+          onClick={() => navigate('/')}
           onMouseEnter={(e) => e.currentTarget.style.color = '#84CC16'}
           onMouseLeave={(e) => e.currentTarget.style.color = '#333'}
         >
