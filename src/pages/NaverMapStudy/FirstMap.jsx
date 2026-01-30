@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import BackButton from '../../components/common/backButton';
 
 const MapEducation = () => {
   const navigate = useNavigate();
@@ -147,25 +148,7 @@ const MapEducation = () => {
       </div>
 
       <footer style={{ position: 'absolute', bottom: '30px', left: '30px', zIndex: 30 }}>
-        <button 
-          onClick={() => navigate('/training')} // 홈으로 이동---연결예정
-          style={{
-            backgroundColor: '#84CC16',
-            color: '#FFFFFF',
-            border: 'none',
-            borderRadius: '50px',
-            padding: '10px 20px',
-            fontSize: '16px',
-            fontWeight: 'bold',
-            boxShadow: '0 4px 0 #65A30D',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px'
-          }}
-        >
-          <span style={{ fontWeight: '900' }}>〈</span> 돌아가기
-        </button>
+        <BackButton onClick={() => navigate(-1)} />
       </footer>
     </div>
   );

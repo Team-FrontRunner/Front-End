@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import BackButton from '../../components/common/backButton';
 
 const MapPathDetail = () => {
   const navigate = useNavigate();
@@ -139,9 +140,9 @@ const MapPathDetail = () => {
         다음 버스 도착까지 남은 시간을 알 수 있어요!
       </div>
 
-      <button onClick={() => navigate(-1)} style={styles.backBtn}>
-        <span style={{ fontSize: '20px', fontWeight: '900' }}>〈</span> 돌아가기
-      </button>
+      <div style={{ position: 'absolute', bottom: '30px', left: '30px', zIndex: 30 }}>
+        <BackButton onClick={() => navigate(-1)} />
+      </div>
     </div>
   );
 };

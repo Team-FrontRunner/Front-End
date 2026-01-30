@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import BackButton from '../../components/common/backButton';
 
 const Gilchatgi = () => {
   const navigate = useNavigate();
@@ -169,12 +170,9 @@ const Gilchatgi = () => {
         </div>
       </div>
 
-      <button 
-        onClick={() => navigate('/gilchatgi')} 
-        style={{ position: 'absolute', bottom: '30px', left: '20px', zIndex: 30, backgroundColor: '#84CC16', color: '#FFFFFF', border: 'none', borderRadius: '50px', padding: '10px 20px', fontSize: '16px', fontWeight: 'bold', boxShadow: '0 4px 0 #65A30D' }}
-      >
-        <span style={{ fontWeight: '900' }}>〈</span> 돌아가기
-      </button>
+      <div style={{ position: 'absolute', bottom: '30px', left: '20px', zIndex: 30 }}>
+        <BackButton onClick={() => navigate(-1)} />
+      </div>
     </div>
   );
 };

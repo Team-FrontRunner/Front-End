@@ -18,11 +18,11 @@ export default function HomePage() {
           오늘 몸은<br />
           어떠신가요?
         </h1>
-        <button className="health-check-btn">
+        <button className="health-check-btn" onClick={() => navigate('/mystat')}>
           <div className="health-icon">
             <img src={heartIcon} alt="heart" />
           </div>
-          <span>내 상태 확인하기</span>
+          <span onClick={() => navigate('/mystat')}>내 건강 기록 확인</span>
         </button>
       </div>
 
