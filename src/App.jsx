@@ -12,8 +12,10 @@ import Settings from './pages/settings.jsx'
 import MathGame from './pages/mathGame.jsx'
 import MyStatPage from './pages/mystatPage.jsx'
 import CardMatchGame from './pages/CardMatchGame.jsx'
+
 import MyRecordPage from './pages/myrecordPage.jsx'
 import ExchangePage from './pages/exchangePage.jsx'
+
 
 
 function App() {
