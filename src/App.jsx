@@ -10,6 +10,7 @@ import FirstMap from './pages/NaverMapStudy/FirstMap'
 import SecondMap from './pages/NaverMapStudy/SecondMap'
 import ThirdMap from './pages/NaverMapStudy/ThirdMap.jsx'
 import Settings from './pages/settings.jsx'
+import MathGame from './pages/mathGame.jsx'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/gilchatgi" element={<SecondMap/>} />
         <Route path="/jido" element={<ThirdMap/>} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/math-game" element={<MathGame />} />
       </Routes>
     </Router>
   )
