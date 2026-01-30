@@ -235,10 +235,16 @@
 }
 
 .exchange-button:hover:not(:disabled) {
-  background: #B3B3B3;
+  background: #3d9000;
+}
+
+.exchange-button:not(:disabled) {
+  background: #4AB000;
+  cursor: pointer;
 }
 
 .exchange-button:disabled {
+  background: #CCCCCC;
   opacity: 0.6;
   cursor: not-allowed;
 }

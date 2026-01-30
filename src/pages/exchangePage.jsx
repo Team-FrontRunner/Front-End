@@ -7,9 +7,9 @@ import { getUserInfo } from '../api/userApi'
 export default function ExchangePage() {
   const navigate = useNavigate()
   const [user, setUser] = useState(null)
-  const [pointToExchange, setPointToExchange] = useState(0)
+  const [pointToExchange, setPointToExchange] = useState('')
   const minimumExchange = 5000
-  const selectedLocalCurrency = '세종사랑상품권'
+  const selectedLocalCurrency = '경기지역화폐'
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -31,7 +31,8 @@ export default function ExchangePage() {
   }
 
   const handleExchange = () => {
-    if (pointToExchange === 0) {
+    const pointValue = parseInt(pointToExchange) || 0;
+    if (pointValue === 0) {
       alert('전환할 포인트를 입력해주세요.')
       return
     }
@@ -39,7 +40,7 @@ export default function ExchangePage() {
       alert(`최소 ${minimumExchange}포인트 이상 필요합니다.`)
       return
     }
-    alert(`${pointToExchange} 포인트를 전환하시겠습니까?`)
+    alert(`${pointValue} 포인트를 전환하시겠습니까?`)
   }
 
   return (
@@ -58,7 +59,7 @@ export default function ExchangePage() {
 
         {/* 안내 메시지 */}
         <div className="info-message">
-          <div className="info-icon">ℹ</div>
+          <div className="info-icon">!</div>
           <p>5,000 포인트부터 전환 가능해요!</p>
         </div>
 
@@ -85,7 +86,7 @@ export default function ExchangePage() {
             <input 
               type="number" 
               value={pointToExchange} 
-              onChange={(e) => setPointToExchange(parseInt(e.target.value) || 0)}
+              onChange={(e) => setPointToExchange(e.target.value)}
               className="points-input"
               placeholder="0"
             />
@@ -97,7 +98,13 @@ export default function ExchangePage() {
 
       {/* 출금하기 버튼 */}
       <div className="exchange-footer">
-        <button className="exchange-button" onClick={handleExchange}>출금하기</button>
+        <button 
+          className="exchange-button" 
+          onClick={handleExchange}
+          disabled={(parseInt(pointToExchange) || 0) < minimumExchange || currentPoints < minimumExchange}
+        >
+          출금하기
+        </button>
         <BackButton onClick={() => navigate(-1)} />
       </div>
     </div>
