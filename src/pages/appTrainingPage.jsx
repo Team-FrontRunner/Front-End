@@ -31,7 +31,7 @@ const AppSelection = () => {
       themeColor: '#FFD400',
       shadowColor: '#D1AD00',
       imageUrl: '/AppIcon/똑닥.png',
-      link: '/ttokddak-education'
+      link: '/ddok'
     },
     {
       id: 'gov24',
@@ -166,7 +166,10 @@ const AppSelection = () => {
                 else if (app.id === 'kakaotaxi') {
                   navigate(app.link);
                 }
-                
+                else if (app.id === 'ttokddak') {
+                  navigate(app.link);
+                }
+
                 else {
                   alert('아직 준비중인 서비스입니다.');
                 }

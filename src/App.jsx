@@ -20,6 +20,7 @@ import BrainGame from './pages/brainGame.jsx'
 import OddOneOut from './pages/OddOneOut.jsx'
 import NumberGame from './pages/NumberGame.jsx'
 import FirstT from './pages/KakaoTaxiStudy/FirstT.jsx'
+import DDok from './pages/DDok.jsx'
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
         <Route path="/brain-game" element={<BrainGame />} />
         <Route path="/number-game" element={<NumberGame />} />
         <Route path="/taxi" element={<FirstT />} />
+        <Route path="/ddok" element={<DDok />} />
       </Routes>
     </Router>
   )
