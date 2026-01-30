@@ -12,7 +12,7 @@ const BrainMissionApp = () => {
     { id: 2, title: '시 읽기', icon: '📖' },
     { id: 3, title: '십자말 풀이', icon: '🐴' },
     { id: 4, title: '산수 연습', icon: '🔢' },
-    { id: 5, title: '기억력 게임', icon: '🧠' },
+    { id: 5, title: '기억의 길', icon: '👣' },
     { id: 6, title: '퍼즐 맞추기', icon: '🧩' },
   ];
 
@@ -144,9 +144,13 @@ const BrainMissionApp = () => {
               else if (m.id === 2) {
                 navigate('/poetry');
               }
-              else {
+              else if (m.id === 5) {
+                navigate('/brain-game');
+              }
+
+              /*else {
                 alert(`${m.title} 서비스는 준비 중입니다.`);
-                }
+                }*/
               
             }}
             onMouseEnter={(e) => {

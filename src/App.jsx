@@ -15,7 +15,7 @@ import CardMatchGame from './pages/CardMatchGame.jsx'
 import Poetry from './pages/poetry.jsx'
 import MyRecordPage from './pages/myrecordPage.jsx'
 import ExchangePage from './pages/exchangePage.jsx'
-
+import BrainGame from './pages/brainGame.jsx'
 
 
 function App() {
@@ -37,10 +37,8 @@ function App() {
 
         <Route path="/poetry" element={<Poetry />} />
         <Route path="/myrecord" element={<MyRecordPage />} />
-
-        <Route path="/myrecord" element={<MyRecordPage />} />
         <Route path="/exchange" element={<ExchangePage />} />
-
+        <Route path="/brain-game" element={<BrainGame />} />
       </Routes>
     </Router>
   )

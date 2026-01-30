@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+// 1. BackButton 컴포넌트를 불러옵니다.
+import BackButton from '../components/common/backButton';
+
 const CardGame = () => {
   const navigate = useNavigate();
   const celebrityIcons = [
@@ -13,20 +16,11 @@ const CardGame = () => {
     { name: '진성', img: '../cardGameIMG/진성.png' }
   ]; 
 
-  // 오답 메시지 리스트
   const wrongMessages = [
-    "그런 스트레스도 필요해!",
-    "두뇌가 말랑해지는 중",
-    "다시 한번 해볼까요?",
-    "아...아쉬워요~",
-    "포기하지 마세요!",
-    "화이팅! 다시 도전!",
-    "조금만 더 집중해봐요!",
-    "거의 다 왔어요!",
-    "다음엔 꼭 맞출 수 있어요!",
-    "실수는 누구나 해요!",
-    "계속 도전하면 성공할 거예요!",
-    "포기하지 말고 계속해요!",
+    "그런 스트레스도 필요해!", "두뇌가 말랑해지는 중", "다시 한번 해볼까요?", 
+    "아...아쉬워요~", "포기하지 마세요!", "화이팅! 다시 도전!", 
+    "조금만 더 집중해봐요!", "거의 다 왔어요!", "다음엔 꼭 맞출 수 있어요!", 
+    "실수는 누구나 해요!", "계속 도전하면 성공할 거예요!", "포기하지 말고 계속해요!",
   ];
 
   const [gameState, setGameState] = useState('READY');
@@ -38,10 +32,8 @@ const CardGame = () => {
   const [feedback, setFeedback] = useState({ indices: [], type: '' });
   const timerRef = useRef(null);
 
-  // 게임 리셋 및 초기화
   const initGame = (e) => {
     if (e) e.stopPropagation();
-    
     if (timerRef.current) clearInterval(timerRef.current);
     setMatchedIndices([]);
     setFlippedIndices([]);
@@ -55,7 +47,6 @@ const CardGame = () => {
     setCards(deck);
 
     setGameState('PREVIEW');
-
     setTimeout(() => {
       setGameState('PLAYING');
       startTimer();
@@ -77,9 +68,7 @@ const CardGame = () => {
 
     if (newFlipped.length === 2) {
       const [first, second] = newFlipped;
-      
       if (cards[first].name === cards[second].name) {
-        // 맞췄을 때: 초록색 피드백
         setFeedback({ indices: [first, second], type: 'correct' });
         setMatchedIndices((prev) => {
           const updated = [...prev, first, second];
@@ -94,11 +83,9 @@ const CardGame = () => {
           setFeedback({ indices: [], type: '' });
         }, 500);
       } else {
-        // 틀렸을 때: 빨간색 피드백 + 랜덤 메시지
         setFeedback({ indices: [first, second], type: 'wrong' });
         const randomIdx = Math.floor(Math.random() * wrongMessages.length);
         setWrongMessage(wrongMessages[randomIdx]);
-        
         setTimeout(() => {
           setFlippedIndices([]);
           setFeedback({ indices: [], type: '' });
@@ -149,7 +136,6 @@ const CardGame = () => {
         <div style={{ marginTop: '15px', fontWeight: 'bold', color: '#666' }}>
           시간: {formatTime(timer)}
         </div>
-        {/* 랜덤 오답 메시지 영역 */}
         <div style={{ height: '30px', marginTop: '10px', color: '#EF4444', fontWeight: 'bold', fontSize: '30px' }}>
           {wrongMessage}
         </div>
@@ -159,12 +145,11 @@ const CardGame = () => {
         {cards.map((card, index) => {
           const isFlipped = gameState === 'PREVIEW' || flippedIndices.includes(index) || matchedIndices.includes(index);
           const isFeedback = feedback.indices.includes(index);
-          
           let bgColor = 'white';
           let borderColor = '#ddd';
           if (isFeedback) {
-            bgColor = feedback.type === 'correct' ? '#DCFCE7' : '#FEE2E2'; // 연한 초록 / 연한 빨강
-            borderColor = feedback.type === 'correct' ? '#22C55E' : '#EF4444'; // 진한 초록 / 진한 빨강
+            bgColor = feedback.type === 'correct' ? '#DCFCE7' : '#FEE2E2';
+            borderColor = feedback.type === 'correct' ? '#22C55E' : '#EF4444';
           }
 
           return (
@@ -189,39 +174,14 @@ const CardGame = () => {
         })}
       </main>
 
+      {/* 2. 푸터의 버튼을 컴포넌트로 교체했습니다. */}
       <footer style={{ marginTop: 'auto', padding: '30px', textAlign: 'center' }}>
-        <div style={{ fontSize: '30px', fontWeight: 'bold' }}>
+        <div style={{ fontSize: '30px', fontWeight: 'bold', marginBottom: '20px' }}>
           맞춘 카드: <span style={{ color: '#84CC16' }}>{matchedIndices.length / 2}</span> / 8
         </div>
-       <button 
-  onClick={() => navigate('/game-select')} // 이 부분을 원하는 경로로 수정
-  style={{
-    backgroundColor: '#84CC16',
-    color: '#FFFFFF',
-    border: 'none',
-    borderRadius: '50px',
-    padding: '12px 25px',
-    fontSize: '30px',
-    fontWeight: 'bold',
-    cursor: 'pointer',
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: '10px',
-    boxShadow: '0 4px 0 #65A30D',
-    marginTop: '20px'
-  }}
-  onMouseDown={(e) => {
-    e.currentTarget.style.transform = 'translateY(2px)';
-    e.currentTarget.style.boxShadow = '0 2px 0 #65A30D';
-  }}
-  onMouseUp={(e) => {
-    e.currentTarget.style.transform = 'translateY(0)';
-    e.currentTarget.style.boxShadow = '0 4px 0 #65A30D';
-  }}
->
-  <span style={{ fontSize: '22px', fontWeight: '900' }}>〈</span>
-  돌아가기
-</button>
+        <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+          <BackButton onClick={() => navigate('/game-select')} />
+        </div>
       </footer>
     </div>
   );
