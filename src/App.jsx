@@ -16,7 +16,7 @@ import Poetry from './pages/poetry.jsx'
 import MyRecordPage from './pages/myrecordPage.jsx'
 import ExchangePage from './pages/exchangePage.jsx'
 import BrainGame from './pages/brainGame.jsx'
-
+import OddOneOut from './pages/OddOneOut.jsx'
 
 function App() {
   return (
@@ -34,7 +34,7 @@ function App() {
         <Route path="/settings" element={<Settings />} />
         <Route path="/math-game" element={<MathGame />} />
         <Route path="/mystat" element={<MyStatPage />} />
-
+        <Route path="/odd-one-out" element={<OddOneOut />} />
         <Route path="/poetry" element={<Poetry />} />
         <Route path="/myrecord" element={<MyRecordPage />} />
         <Route path="/exchange" element={<ExchangePage />} />
