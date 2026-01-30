@@ -9,7 +9,7 @@ const BrainMissionApp = () => {
   // 데이터 배열
   const missions = [
     { id: 1, title: '카드 맞추기', icon: '🎴' },
-    { id: 2, title: '시 짓기', icon: '✍️' },
+    { id: 2, title: '시 읽기', icon: '📖' },
     { id: 3, title: '십자말 풀이', icon: '🐴' },
     { id: 4, title: '산수 연습', icon: '🔢' },
     { id: 5, title: '기억력 게임', icon: '🧠' },
@@ -141,6 +141,9 @@ const BrainMissionApp = () => {
               else if (m.id === 4) {
                 navigate('/math-game');
               } 
+              else if (m.id === 2) {
+                navigate('/poetry');
+              }
               else {
                 alert(`${m.title} 서비스는 준비 중입니다.`);
                 }
