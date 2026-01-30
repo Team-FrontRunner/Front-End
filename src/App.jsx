@@ -17,6 +17,7 @@ import MyRecordPage from './pages/myrecordPage.jsx'
 import ExchangePage from './pages/exchangePage.jsx'
 import BrainGame from './pages/brainGame.jsx'
 import OddOneOut from './pages/OddOneOut.jsx'
+import NumberGame from './pages/NumberGame.jsx'
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         <Route path="/myrecord" element={<MyRecordPage />} />
         <Route path="/exchange" element={<ExchangePage />} />
         <Route path="/brain-game" element={<BrainGame />} />
+        <Route path="/number-game" element={<NumberGame />} />
       </Routes>
     </Router>
   )

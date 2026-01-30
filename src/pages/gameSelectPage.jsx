@@ -13,7 +13,7 @@ const BrainMissionApp = () => {
     { id: 3, title: '다른 것 찾기', icon: '🔍' },
     { id: 4, title: '산수 연습', icon: '🔢' },
     { id: 5, title: '기억의 길', icon: '👣' },
-    { id: 6, title: '퍼즐 맞추기', icon: '🧩' },
+    { id: 6, title: '숫자 기차', icon: '🚂' },
   ];
 
   // 인라인 스타일 객체
@@ -156,7 +156,7 @@ const BrainMissionApp = () => {
               }
              
               else if (m.id === 6) {
-                navigate('/');
+                navigate('/number-game');
               }
               
             }}
