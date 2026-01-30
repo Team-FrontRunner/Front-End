@@ -1,14 +1,30 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './exchangePage.css'
 import BackButton from '../components/common/backButton'
+import { getUserInfo } from '../api/userApi'
 
 export default function ExchangePage() {
   const navigate = useNavigate()
+  const [user, setUser] = useState(null)
   const [pointToExchange, setPointToExchange] = useState(0)
-  const currentPoints = 3500
   const minimumExchange = 5000
   const selectedLocalCurrency = '세종사랑상품권'
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const data = await getUserInfo("f57ce428-5e03-4613-9186-cdbce942ba7a");
+        setUser(data);
+      } catch (error) {
+        console.error('유저 정보 로드 실패:', error);
+      }
+    }
+
+    fetchUser();
+  }, [])
+
+  const currentPoints = user?.current_point ?? 0
 
   const handleMaxPoint = () => {
     setPointToExchange(currentPoints)
