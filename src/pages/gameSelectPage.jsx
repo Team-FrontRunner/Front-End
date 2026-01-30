@@ -137,9 +137,14 @@ const BrainMissionApp = () => {
               // '카드 맞추기' 클릭 시 이동 로직
               if (m.id === 1) {
                 navigate('/card-game'); 
-              } else {
+              } 
+              else if (m.id === 4) {
+                navigate('/math-game');
+              } 
+              else {
                 alert(`${m.title} 서비스는 준비 중입니다.`);
-              }
+                }
+              
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.borderColor = '#84CC16';
